@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/reply.css">
+    <title>共享漂流书屋</title>
+    <script>
+        document.documentElement.style.fontSize = document.documentElement.clientWidth / 750 * 100 + "px";
+    </script>
+     <script src="./js/jquery.min.js"></script>
+     <script src="./js/reply.js"></script>
+     <script src="./js/starScore.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="return">
+            <a href="./index.html">
+                <img src="./img/return.png" alt="返回上一页">
+            </a>           
+        </div>
+        <div class="title-info">读后感的评论</div>
+        <div class="spot">
+            <img src="./img/spot.png">
+        </div>
+    </nav>
+
+    <main>
+      <div class="main-comment-info">
+
+
+      </div>
+
+        <div class="line"></div>
+
+        <div class="replyNumber"><span></span>条回复</div>
+
+         <!-- 回复评论者的内容详情--> 
+        <section>
+            
+            <!-- <div class="section-comment-info">
+                <div class="section-top">
+                    <div class="section-headPortrait">
+                        <img src="./img/head.png" alt="">
+                    </div>
+    
+                    <div class="section-recollections">
+                        <p class="section-recollections-title">读后感</p>
+                    </div>
+                    <div class="section-more">
+                        <img src="./img/spot-h.png" alt="">
+                    </div> 
+                </div>
+    
+                <div class="section-content">
+                    <p class="section-content-info">
+                        当里个当，当里个当，闲言碎语不要讲，咱聊一聊火车上的奇葩一桩桩，
+                        春运期间客很满，各色乘客满车厢，左边看，年轻的小哥在撩妹，右边看，中年大妈瓜子嗑的香，
+                        前面看，西装大哥吹牛逼，后面看，
+                    </p>
+                </div>
+    
+                <div class="section-bottom">                   
+                    <div class="section-bottom-time">
+                        <span class="section-time-data">12-19</span>
+                        <span class="section-time-hour">20:00</span>
+                    </div>
+    
+                    <div class="section-bottom-right">
+                        <div class="section-fabulous-img">
+                            <img src="./img/favor-small.png" alt="">
+                        </div>
+                        <p class="section-fabulous-num">60</p>        
+                    </div>
+                </div>
+    
+            </div> -->
+
+
+        </section>
+    </main>
+
+   
+
+    <footer>
+        <div class="footer-content">
+            <input type="text" placeholder="评论一下吧...">  
+            <p id="sendOut">发送</p>
+        </div>     
+    </footer>
+
+    <script src="./js/md5.js"></script>
+    <script src="./js/sign.js"></script>
+    <script>
+        $('input').on('focus',function(event){      
+        //自动反弹 输入法高度自适应
+            var target = this;
+            setTimeout(function(){
+                target.scrollIntoViewIfNeeded();
+            },100);
+        });
+    </script>
+</body>
+</html>

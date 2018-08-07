@@ -1,0 +1,143 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-size: .3rem;
+  background-color: #e6e6e6;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  height: 0.9rem;
+  background-color: #e89213;
+  padding: 0 .4rem;
+  align-items: center;
+}
+
+header .publish {
+  font-size: .4rem;
+  color: #313232;
+}
+
+header .back {
+  height: 100%;
+  width: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+header .back img {
+  height: .4rem;
+}
+
+article {
+  background-color: #fff;
+  padding-bottom: .3rem;
+}
+
+#idea {
+  height: 2.3rem;
+  width: 100%;
+  padding: .3rem .5rem;
+  box-sizing: border-box;
+  border: none;
+  resize: none;
+  outline:none;
+  color: #8c8c8c;
+  font-size: .3rem;
+}
+
+.upload {
+  display: flex;
+  flex-direction: row;
+  padding-left: .5rem;
+  margin-bottom: .9rem;
+}
+
+.upload img {
+  width: 1.68rem;
+  height: 1.68rem;
+  margin-right: .2rem;
+}
+
+#upload {
+  position: relative;
+}
+
+#upload .add {
+    display: inline-block;
+    width: 1.68rem; height: 1.68rem;
+    color: #ccc;
+    border: 2px solid;
+    text-indent: -12em;
+    transition: color .25s;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+#upload .add::before, .add::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+#upload .add::before {
+    width: 1.2rem;
+    border-top: 2px solid;
+    margin: -1px 0 0 -.6rem;
+}
+
+#upload .add::after {
+    height: 1.2rem;
+    border-left: 2px solid;
+    margin: -.6rem 0 0 -1px;
+}
+
+#imageFile {
+  position: absolute;
+  width: 1.68rem;
+  height: 1.68rem;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.label {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 .8rem 0 .5rem;
+  font-size: .3rem;
+}
+
+.label > span {
+  display: flex;
+  align-items: center;
+}
+
+.label .icon {
+  display: inline-flex;
+  height: .3rem;
+  width: 0.5rem;
+  background-size: contain;
+}
+
+.label .icon_position {
+  background: url(../img/icon_position.png) center/contain no-repeat;
+}
+
+.label .icon_eye {
+  width: .4rem;
+  margin-right: .15rem;
+  background: url(../img/icon_eye.png) center/contain no-repeat;
+}
+
+.label .icon_at {
+  background: url(../img/icon_at.png) center/contain no-repeat;
+}

@@ -1,0 +1,767 @@
+*{
+    padding:0;
+    margin:0;
+    list-style-type:none;
+    text-decoration: none;
+    outline: none;
+}
+
+body{
+    width:100%;
+    height:100%;
+    font-family:"PingFangSC-Regular";
+}
+
+.title {
+    width:100%;
+    height: .9rem;
+    padding: 0 .5rem;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:#323232;
+    .return {
+        height: 100%;
+        width: 0.5rem;
+        display: flex;
+        align-items: center;
+        img {
+            height: .4rem;
+        }
+    }
+    .title-info {
+        font-size: .35rem;
+        color: white;
+    }
+    .spot {
+        width: .54rem;
+        height: .08rem;
+        display: flex;
+        img {
+            width: .54rem;
+            height: .08rem;
+        }
+    }
+}
+
+main {
+    width:100%;
+    position: absolute;
+    top: .9rem;
+    bottom: 1rem;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    .loadding {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: url(../img/loadding.gif) center no-repeat;
+        background-size: 2.56rem 2.56rem; 
+      }
+}
+
+
+header{
+    width:100%;
+    height:4.66rem;
+
+
+    .header-content {
+        width: 100%;
+        height: 4.66rem;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 .52rem;
+        box-sizing: border-box;
+
+        .header-left {
+            height: 2.86rem;
+            margin-top: .7rem;
+            .header-title {
+                padding-bottom:.38rem;
+                p{
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                }
+                .p1 {
+                    height:.4rem;                
+                    font-size: .4rem;
+                    padding-bottom:.2rem;
+                    color: #fff;
+                }
+                .p2 {
+                    height:.28rem;
+                    font-size: .24rem;
+                    color: #f7ece4;
+                }
+            }
+            .header-details {
+                ul{
+                    li{
+                        height:.26rem;
+                        font-size: .24rem;
+                        padding-bottom:.15rem;
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        color: #fffbf8;
+                    }
+                }
+              
+            }
+        }
+
+        .header-right {
+            width: 2.15rem;
+            height: 3.01rem;
+            margin-top:.58rem;
+            img{
+                width:2.15rem;
+                height:3.01rem;
+            }
+        }
+    }
+}
+
+
+.score{
+    width:100%;
+    height:2.44rem;
+    display:flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    .score-star{
+        display: flex;
+        align-items: center;
+        padding-bottom:.2rem;
+
+    .show_number {
+        width:100%;
+        display: flex;
+        align-items: center;
+
+        span {
+        display: inline-block;
+        height:.36rem;
+        line-height: .36rem;
+        font-size: .46rem;
+        font-weight: 800;
+        color:#514f4e;
+        padding-right:.07rem;
+        }
+
+        .atar_Show {
+            background: url(../img/score-star-n.png)repeat-x;
+            background-size:.48rem .32rem;
+            width: 2.4rem;
+            height: .32rem;
+            position: relative;
+
+            p {
+                background: url(../img/score-star.png)repeat-x;
+                background-size:.48rem .32rem;
+                left: 0;
+                height:.32rem;
+                width: 2.4rem;
+            }
+        }
+    }    
+
+  }
+    .score-num{
+        height:.24rem;
+        font-size:.24rem;
+        line-height: .24rem;
+        color:#8e8e8e;
+        padding-bottom:.34rem;
+        p{
+            display: inline-block;
+        }
+    }
+    .score-info{
+        height:.34rem;
+        font-size: .34rem;
+        line-height: .34rem;
+        color:#f4971e;
+        
+    }
+   
+}
+
+section{
+    width:100%;
+    .section-top{
+        width:88.4%;
+        height:auto!important; 
+        height:2.88rem; 
+        min-height:2.88rem;
+        margin:0 auto;
+        border-bottom:.01rem solid #e2e2e2;
+        padding-bottom:.4rem;
+        box-sizing:border-box;
+        
+       .section-top-title{
+           height:.34rem;
+           line-height: .34rem;
+           padding-bottom:.17rem;
+           font-size: .34rem;
+           color:#282523;
+       } 
+       .section-top-info{
+           width:100%;
+           height:auto!important; 
+           height:1.9rem; 
+           min-height:1.9rem;
+           padding-left:.14rem;
+           position: relative;
+
+           .section-info-details{
+               height:1.9rem;
+            //    display: flex;
+               display:block;
+               font-size: .28rem;
+               text-indent:.64rem;
+               letter-spacing: .01rem;
+               line-height: .5rem;
+               color:#2f3235;
+               overflow: hidden;
+
+                transition: height 2s;
+                -moz-transition: height 2s; /* Firefox 4 */
+                -webkit-transition: height 2s; /* Safari 和 Chrome */
+                -o-transition: height 2s; /* Opera */ 
+           }
+           .section-info-more{  
+                width:1.24rem;  
+                height:.3rem;          
+                font-size: .28rem;
+                line-height: .3rem;
+                color:#219af4;
+                background: rgba(255,255,255,0.9);
+                text-align: right;
+                position: relative;
+                bottom:.3rem;
+                left:5.1rem;
+                padding-right: .25rem;
+           }
+       }
+    }
+
+    .section-top-content{
+        width:100%;
+        padding: .36rem .58rem .72rem .58rem;
+        box-sizing: border-box;
+        .section-top-center{
+            width:100%;
+            height:.78rem;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+
+            .section-center-img{
+                width:.33rem;
+                height:.33rem;
+                display: flex;
+                align-items: center;
+                padding-right:.42rem;
+                img{
+                    width:.33rem;
+                    height:.33rem;
+                }
+            }
+            p{
+                height:.76rem;
+                overflow-x: hidden;
+                overflow-y: scroll;
+                font-size: .28rem;
+                color:#2f3235;
+                line-height: .42rem;
+            }
+            p::-webkit-scrollbar {
+                display: none;
+            }
+        }
+        .section-top-center:not(:last-child){
+            margin-bottom:.55rem;
+        }
+
+    }
+
+    .bj-12{
+        width:100%;
+        height:.12rem;
+        background: #e8e8e8;
+    }
+    /* 评论 */
+    .evaluate{
+        width:100%;
+        height:.75rem;
+        margin-top:-.06rem;
+        box-sizing: border-box;
+        margin-bottom:.28rem;
+        background: url('../img/evaluate.png') no-repeat center center;
+        background-size:1.63rem .73rem;
+        text-align: center;
+        color:#fffbed;
+        font-size: .34rem;
+        line-height: .6rem;
+    }
+    /* 读者总评价 */
+    .readers-evaluate{
+        width:100%;
+        height:2.14rem;
+        padding:0 .72rem 0 .6rem;
+        margin-bottom:.72rem;
+        box-sizing: border-box;
+
+        .readers-evaluate-title{
+            height:.34rem;
+            line-height: .34rem;
+            font-size: .34rem;
+            color:#282523;  
+            padding-bottom:.52rem;
+        }
+
+        .readers-evaluate-content{
+            width:100%;
+            display: flex;
+            justify-content:space-between;
+            padding-bottom:.2rem;
+            .readers-evaluate-left{
+                height:.84rem;
+                display: flex;
+                align-items: center;
+                .readers-evaluate-p1{
+                    height:.74rem;
+                    line-height: .72rem;
+                    font-size: .9rem;
+                    font-weight: 800;
+                    color:#514f4e;
+                    padding-left:.42rem;
+                }              
+            }
+            /* 星星评分 与 进度条 */
+            .readers-evaluate-right{
+                height:.84rem;
+                display: flex;
+                justify-content: space-between;
+                .readers-right-ster{
+                    width:.65rem;
+                    height:.84rem;
+                    padding-right:.06rem;
+                    .readers-ster-5{
+                         width:.65rem;
+                         height:.84rem;
+                         display: flex;
+                         flex-flow: column;
+                        li{
+                            width:.65rem;
+                            height:.11rem;
+                            display: flex;  
+                            align-items: center;                     
+                            img{
+                               width:.65rem;
+                               height:.11rem;
+                            }
+                        }
+                        li:not(:last-child){
+                            padding-bottom:.14rem;
+                        }
+                    }
+                }
+
+                /* 进度条开始 */ 
+                .progressBar-container {
+                    width: 3rem;
+                    height:.84rem;
+                    // overflow: hidden;
+                    .progressBar-content{
+                        width:3rem;
+                        height:.84rem;
+                        margin:0;
+                        position:relative;
+                        .progressBar-col { 
+                            width:3rem; 
+                            height:.84rem;
+                            #progressBar-state { 
+                                width:3rem;
+                                li { 
+                                    width:3rem;
+                                    height:.06rem; 	
+                                    border-radius:.04rem; 										
+                                    background:#d3d3d3; 
+                            
+                                    .expand{ 
+                                        display: block;
+                                        width:3rem;
+                                        height:.06rem; 
+                                        border-radius:.04rem; 
+                                        background:#514f4e; 
+                                        position:absolute;
+                                    }
+                                    // .star-5{ 
+                                    //     width:100%;                                     
+                                    // }
+                                    // .star-4{ 
+                                    //     width:20%;                                          
+                                    // }
+                                    // .star-3{ 
+                                    //    width:10%;                                         
+                                    // }
+                                    // .star-2{ 
+                                    //     width:10%;                                       
+                                    // }
+                                    // .star-1{ 
+                                    //     width:10%;                                     
+                                    // }                                                 
+                                }
+                                li:not(:last-child){
+                                    margin-bottom:.14rem; 
+                                }
+                            }
+                        }
+                    }
+                }
+                /* 进度条结束  */
+            }
+
+            
+        }
+
+        .readers-evaluate-num{
+            height:.24rem;
+            font-size:.24rem;
+            line-height: .24rem;
+            color:#8e8e8e;
+            display:flex;
+            padding-left:.06rem;
+            .readers-evaluate-p2{
+                height:.24rem;
+                line-height: .24rem;
+                font-size:.24rem;                       
+            }
+           .readers-evaluate-num2{
+               letter-spacing:.01rem;
+           } 
+        }
+    }
+
+    article{
+        width:100%;
+        height:auto;
+
+        .article-comment-info{
+            width:100%;
+            height:3.5rem;
+            padding:0 .42rem 0 .5rem;
+            box-sizing: border-box;
+
+            .article-top{
+                width:100%;
+                height:1.02rem;
+                display: flex;
+                align-items: center;
+                .article-headPortrait{
+                    width:1.02rem;
+                    height:1.02rem;
+                    margin-right:.14rem; 
+                    display: flex;
+                    img{
+                        width:1.02rem;
+                        height:1.02rem; 
+                        border-radius: 50%;
+                    }
+                }
+    
+                .article-recollections{
+                    flex-grow:1;
+                    .article-recollections-title{
+                        font-size: .3rem;
+                        color:#5a6e96;
+                        padding-bottom:.24rem;
+                        // padding-left:.02rem;
+                    }
+   
+                    .clearfix::after{ 
+                        display:block; 
+                        content:''; 
+                        height:0; 
+                        overflow:hidden; 
+                        clear:both;
+                    } 
+   
+                    .article-recollections-score{
+                        width:100%;
+                        height:.22rem;
+                        display: flex;
+                        align-items: center;
+                
+                        span {
+                            display:flex;
+                            align-items: center;
+                            font-size: .24rem;
+                            color:#fea54c;
+                        }
+                        .score_Show {
+                            width:1.4rem;
+                            height: .2rem;
+                            background: url(../img/header-star-null.png)repeat-x;
+                            background-size:.28rem .2rem;                                
+                            position: relative;
+                
+                            p {
+                                width:1.4rem;
+                                height:.2rem;
+                                background: url(../img/header-star.png)repeat-x;
+                                background-size:.28rem .2rem;
+                                left: 0;
+                                
+                            }
+                        }
+                    }                      
+                }
+                .article-more{
+                    width:.3rem;
+                    height:.09rem;
+                    display: flex;
+                    align-self: flex-start;
+                    padding-top:.08rem;
+                    a{
+                        display: flex;
+                        width:.3rem;
+                        height:.09rem;
+                        -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+                        
+                        img{
+                            width:.3rem;
+                            height:.09rem;
+                        }
+                    }
+                    
+                }
+    
+            }
+    
+            .article-content{
+                width:100%;
+                height:1.68rem;
+                padding:.28rem 0 .26rem 0;
+    
+                .article-content-info{
+                    width:100%;
+                    height:1.68rem;
+                    font-size: .28rem;
+                    color:#2f3235;
+                    line-height: .42rem;
+                    overflow:auto;
+                }
+            }
+            .article-bottom{
+               width:100%;
+               height:.26rem;
+                display: flex;
+                justify-content:space-between;
+                align-items: center;
+               .article-bottom-time{
+                //    width:1.6rem;
+                    font-size: .24rem;
+                    color:#9a9a9a;
+                    display: flex;
+                    .article-time-data{
+                        padding-right:.26rem;
+                    }
+                }
+    
+                .article-bottom-right{
+                    width:1.68rem;
+                    height:.26rem;
+                    font-size: .24rem;
+                    color:#9a9a9a;
+                    display: flex;
+                    align-items: center;
+                    padding-right:.24rem;
+                    position: relative;
+    
+                    .article-bottom-fabulous{
+                        height:.24rem;
+                        display: flex;
+                        align-items: center;
+                        margin-right: .38rem;
+                        box-sizing: border-box;
+                        align-items: center;
+
+                        .article-fabulous-img{
+                            width:.25rem;
+                            height:.24rem;
+                            display: flex;
+                            padding-right:.12rem;
+                            cursor: pointer;
+                            
+                            img{
+                                width:.25rem;
+                                height:.24rem;
+                                display:block;
+                            }
+
+                            img.animation{
+                                animation: myfirst 0.5s;
+                                -moz-animation: myfirst 0.5s;	/* Firefox */
+                                -webkit-animation: myfirst 0.5s;	/* Safari 和 Chrome */
+                                -o-animation: myfirst 0.5s;	/* Opera */
+                            }
+                        }
+
+                        .add-num{
+                            display:none;
+                    
+                            .add-animation{
+                                color: #000;
+                                position:absolute;
+                                top:-.2rem;
+                                left: .1rem;
+                                font-size: .15rem;
+                                opacity: 0;
+                                filter: Alpha(opacity=0);
+                                -moz-opacity:0;
+                                animation: mypraise 0.5s ;
+                                -moz-animation: mypraise 0.5s ;	/* Firefox */
+                                -webkit-animation: mypraise 0.5s ;	/* Safari 和 Chrome */
+                                -o-animation: mypraise 0.5s ;	/* Opera */
+                                font-style:normal;
+                            }
+                        }
+
+                        .praise-txt.hover{
+                            color: #EB4F38;
+                        }
+                    
+                        /*点赞图标放大动画开始*/
+                    
+                        @-webkit-keyframes myfirst 
+                        {
+                            0%{
+                                width:.25rem;
+                                height:.24rem;
+                            }
+                            50%{
+                                width:.35rem;
+                                height:.34rem;
+                            }
+                            100% {
+                                width:.24rem;
+                                height:.25rem
+                            }
+                        }                  
+                    
+                        /*点赞图标放大动画结束*/
+                        /*点赞数量加减动画开始*/
+                    
+                        @-webkit-keyframes mypraise
+                        {
+                            0%{
+                                top:-.15rem;
+                                opacity: 0;
+                                filter: Alpha(opacity=0);
+                                -moz-opacity:0;
+                            }
+                            25%{
+                                top:-.20rem;
+                                opacity: 0.5;
+                                filter: Alpha(opacity=50);
+                                -moz-opacity:0.5;
+                            }
+                            50%{
+                                top:-.25rem;
+                                opacity: 1;
+                                filter: Alpha(opacity=100);
+                                -moz-opacity:1;
+                            }
+                            75%{
+                                top:-.30rem;
+                                opacity: 0.5;
+                                filter: Alpha(opacity=50);
+                                -moz-opacity:0.5;
+                            }
+                            100% {
+                                top:-.35rem;
+                                opacity: 0;
+                                filter: Alpha(opacity=0);
+                                -moz-opacity:0;
+                            }
+                        }
+                    
+                        /*点赞数量加减动画结束*/
+                        /*动态点赞结束*/
+                       
+                    }
+                    .article-bottom-comment{
+                        height:.24rem;
+                        display: flex;
+                        align-items: flex-start;
+                        .article-comment-img{
+                            width:.25rem;
+                            height:.24rem;
+                            display: flex;
+                            padding-right:.12rem;
+                            img{
+                                width:.25rem;
+                                height:.24rem;
+                            }
+                        }
+                        .article-comment-num{
+                            height:.24rem;
+                            line-height: .2rem;
+                        }
+                    }
+                }
+    
+            }
+        }
+
+        .article-comment-info:not(:last-child){
+            margin-bottom:.7rem;
+        }
+    }
+       
+
+
+  
+}
+
+
+
+
+
+
+footer{
+    width:100%;
+    height:1rem;
+    position: fixed;
+    right:0;
+    left:0;
+    bottom:0;
+    .footer-content{
+        width:100%;
+        height:100%;
+        background:#eb8b16;      
+        color:#fffefd;
+        font-size: .3rem;
+        text-align: center;
+        line-height: 1rem;
+
+        // a{
+        //     width:100%;
+        //     height:100%;
+        //     display: block;
+        //     color:#fffefd;
+        //     font-size: .3rem;
+        //     text-align: center;
+        //     line-height: 1rem;
+        // }
+    }
+}

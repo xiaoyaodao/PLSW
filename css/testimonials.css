@@ -1,0 +1,148 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-size: .3rem;
+  background-color: #e6e6e6;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  height: 0.9rem;
+  background-color: #e89213;
+  padding: 0 .4rem;
+  align-items: center;
+}
+
+header .testimonials {
+  font-size: .4rem;
+  color: #313232;
+}
+
+header .back {
+  height: 100%;
+  width: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+header .back img {
+  height: .4rem;
+}
+
+header .camera img {
+  height: 0.45rem;
+}
+
+section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: .23rem .4rem .17rem .25rem;
+  margin-bottom: .1rem;
+  background-color: #fff;
+}
+
+section > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.atvr {
+  margin-right: .2rem;
+}
+
+.atvr_icon img {
+  width: 0.83rem;
+  height: 0.83rem;
+}
+
+.distance {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: .3rem;
+}
+
+.distance img {
+  width: 0.31rem;
+  height: 0.41rem;
+  margin-top: .24rem;
+  margin-bottom: .1rem;
+}
+
+.information .name {
+  color: #5a6e96;
+}
+
+.information .time {
+  font-size: .25rem;
+  margin-top: .25rem;
+  margin-bottom: .33rem;
+  color: #b4b4b4;
+}
+
+.information .image {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: .22rem;
+  margin-bottom: .4rem;
+}
+
+.information .image img {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.label {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: .3rem;
+}
+
+.label > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.label .icon {
+  display: inline-flex;
+  height: .34rem;
+  width: 0.5rem;
+  background-size: contain;
+  margin-right: .1rem;
+}
+
+.label .icon_favor {
+  background: url(../img/icon_favor.png) center/contain no-repeat;
+}
+
+.label .icon_reward {
+  background: url(../img/icon_reward.png) center/contain no-repeat;
+}
+
+.label .icon_comment {
+  background: url(../img/icon_comment.png) center/contain no-repeat;
+}
+
+.more {
+  display: flex;
+  flex: none;
+  width: .7rem;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.more .icon {
+  width: .08rem;
+  height: .08rem;
+  border-radius: 50%;
+  background-color: #3c3c3c;
+}
+
+.more .icon:not(:last-child) {
+  margin-right: .03rem;
+}

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>共享漂流书屋</title>
+    <script>
+        document.documentElement.style.fontSize = document.documentElement.clientWidth / 750 * 100 + "px";
+    </script>
+    <script src="./js/zepto.min.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./js/starScore.js"></script>
+</head>
+<body>
+    <div class="title">
+        <div class="return">
+            <img src="./img/return.png" alt="返回上一页">
+        </div>
+        <div class="title-info">共享漂流书屋</div>
+        <div class="spot">
+            <img src="./img/spot.png" alt="去发布感言">
+        </div>
+    </div>
+
+    <main>
+        <header>
+            <div class="header-content">
+
+                <div class="header-left">
+                    <!-- 书名 -->
+                    <div class="header-title">
+                        <p class="p1"></p>
+                        <p class="p2"></p>
+                    </div>
+                    <!-- 图书的相关信息 -->
+                    <div class="header-details">
+
+                    </div>
+                </div>
+                <!-- 图书封面 -->
+                <div class="header-right">
+
+                </div>
+            </div>
+        </header>
+
+        <div class="score">
+            <div class="score-star">
+                <!-- 头部评分 -->
+            </div>
+            
+            <div class="score-num">
+                <p>评论数</p>
+                <span class="number-of-omments"></span>
+            </div>
+
+            <div class="score-info">您是第<span claas="score-info-num"></span>位阅读者</div>
+ 
+        </div>
+
+        <section>
+            <div class="section-top">
+                <p class="section-top-title">内容简介</p>
+                <div class="section-top-info">
+                    <p class="section-info-details">
+                        <!-- 书的简介 -->                      
+                    </p>
+                    <div class="section-info-more">更多</div>
+                </div>
+            </div>
+
+            <div class="section-top-content">
+                <!-- 书本推荐语 -->                    
+            </div>
+
+            <div class="bj-12"></div>
+           
+            <div class="evaluate">
+                评论
+            </div>           
+            
+            <div class="readers-evaluate">
+                <div class="readers-evaluate-title">读者总评价</div>
+
+                <div class="readers-evaluate-content">
+                    <!-- 读者总评分 -->
+                    <div class="readers-evaluate-left">
+                        <p class="readers-evaluate-p1"></p>
+                    </div>
+                    <!-- 评分星星 与 进度条 -->
+                    <div class="readers-evaluate-right">
+                        <div class="readers-right-ster">
+                            <ul class="readers-ster-5">
+                                <li>
+                                    <img src="./img/star-5.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="./img/star-4.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="./img/star-3.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="./img/star-2.png" alt="">
+                                </li>
+                                <li>
+                                    <img src="./img/star-1.png" alt="">
+                                </li>
+                            </ul>
+                          
+                        </div>
+                        <div class="progressBar-container">
+                            <div class="progressBar-content">
+                                <div class="progressBar-col">
+                                    <ul id="progressBar-state">
+                                        <li>
+                                            <span class="expand star-5"></span>
+                                        </li>
+                                        <li>
+                                            <span class="expand star-4"></span>
+                                        </li>
+                                        <li>
+                                            <span class="expand star-3"></span>
+                                        </li>
+                                        <li>
+                                            <span class="expand star-2"></span>
+                                        </li>
+                                        <li>
+                                            <span class="expand star-1"></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>                       
+                    </div>
+                  
+                </div>
+
+                <div class="readers-evaluate-num">
+                    <p class="readers-evaluate-p2">评分人数</p>
+                    <span class="readers-evaluate-num2"></span>
+                </div>
+            </div>
+
+            <!-- 书的评论  -->
+            <article>
+              
+            </article>
+           
+        </section> 
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        写评论
+      </div>    
+    </footer>
+
+    <script src="./js/md5.js"></script>
+    <script src="./js/sign.js"></script>
+    <script>
+
+   
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+@charset "UTF-8";
+body, li, p, ul {
+  margin: 0;
+  padding: 0;
+  font: 12px/1 Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
+}
+
+ul, li, ol {
+  list-style: none;
+}
+
+/* 重置文本格式元素 */
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #333333;
+  font-size: 14px;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.clearfix::after {
+  display: block;
+  content: '';
+  height: 0;
+  overflow: hidden;
+  clear: both;
+}
+
+// .score-star{
+//     width:100%;
+//     display: flex;
+//     align-items: center;
+//     padding-bottom:.2rem;
+//     p{
+//         height:.36rem;
+//         line-height: .36rem;
+//         font-size: .46rem;
+//         font-weight: 800;
+//         color:#514f4e;
+//         padding-right:.14rem;
+//     }
+//     .score-img {
+//         height:.34rem;
+//         display: flex;
+//         img{
+//             height:.34rem;
+//         }
+//     }
+// }
+
+/*星星样式*/
+.score-star {
+  width:100%;
+  display: flex;
+  align-items: center;
+  padding-bottom: .2rem;
+ 
+  .show_number {
+    width:100%;
+    display: flex;
+    align-items: center;
+
+    span {
+      display: inline-block;
+      height:.36rem;
+      line-height: .36rem;
+      font-size: .46rem;
+      font-weight: 800;
+      color:#514f4e;
+      padding-right:.14rem;
+    }
+
+      .atar_Show {
+        background: url(../img/score-star-n.png)repeat-x;
+        background-size:.47rem .32rem;
+        width: 2.4rem;
+        height: .32rem;
+        position: relative;
+
+        p {
+          background: url(../img/score-star.png)repeat-x;
+          background-size:.47rem .32rem;
+          left: 0;
+          height:.32rem;
+          width: 2.4rem;
+        }
+      }
+
+     
+
+  }
+
+
+
+}
+
+

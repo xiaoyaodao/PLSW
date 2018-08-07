@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/comment.css">
+    <title>共享漂流书屋</title>
+    <script>
+        document.documentElement.style.fontSize = document.documentElement.clientWidth / 750 * 100 + "px";
+    </script>
+    <script src="js/zepto.min.js"></script>
+    <script src="js/starScore.js"></script>
+    <script src="js/comment.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="return">
+            <a href="./index.html">
+                <img src="./img/return.png" alt="返回上一页">
+            </a>
+            
+        </div>
+        <div class="title-info">从你的全世界路过</div>
+        <div class="spot">
+            <img src="./img/spot.png"> 
+        </div>
+    </nav>
+
+    <main>
+        <div class="star-comment-content">
+                
+            <div id="startone"  class="block clearfix" >
+
+                <!-- 存放星星的容器 -->
+                <div class="star_score"></div>
+
+                <!-- 评价内容 -->
+                <div class="startone-info">
+                    <span>极差</span>
+                    <span>较差</span>
+                    <span>一般</span>
+                    <span>良好</span>
+                    <span>优秀</span>
+                </div>
+
+                <!-- 评价分数 -->
+                <p>
+                    我的评分：
+                    <span class="fenshu"></span>
+                    分
+                </p>
+
+            </div>
+        <iv>
+
+        <div class="inuptss">
+            <textarea id="textareas" placeholder="这一刻的想法..."></textarea>
+            
+        </div>
+
+
+    </main>
+
+   
+
+    <footer>
+        <div class="footer-content">
+           发布
+        </div>     
+    </footer>
+
+    <script src="./js/md5.js"></script>
+    <script src="./js/sign.js"></script>
+    <script>
+        // 评星
+        scoreFun($("#startone"));
+
+        // textareas 高度自适应
+        var text = document.getElementById("textareas");
+        autoTextarea(text);//调用
+        
+        // textareas 字数限定为100
+       $("#textareas").on("input propertychange", function() {
+        var $this = $(this),
+            _val = $this.val(),
+            count = "";
+        if (_val.length > 100) {
+            $this.val(_val.substring(0, 100));
+            alert("您好！文字数限定为100，谢谢！");
+        }
+       
+    });
+
+    </script>
+</body>
+</html>
