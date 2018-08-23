@@ -47,15 +47,15 @@
                 <!-- 评价分数 -->
                 <p>
                     我的评分：
-                    <span class="fenshu"></span>
+                    <span class="fenshu">0.0</span>
                     分
                 </p>
 
             </div>
-        <iv>
+        </div>
 
         <div class="inuptss">
-            <textarea id="textareas" placeholder="这一刻的想法..."></textarea>
+            <textarea id="textareas"  placeholder="这一刻的想法..."></textarea>
             
         </div>
 
@@ -77,8 +77,8 @@
         scoreFun($("#startone"));
 
         // textareas 高度自适应
-        var text = document.getElementById("textareas");
-        autoTextarea(text);//调用
+        // var text = document.getElementById("textareas");
+        // autoTextarea(text);//调用
         
         // textareas 字数限定为100
        $("#textareas").on("input propertychange", function() {

@@ -1,4 +1,0 @@
-var data = search.slice(1);// 方法可提取字符串的某个部分，并以新的字符串返回被提取的部分。
-var code = data.split('&')[0];// 方法用于把一个字符串分割成字符串数组。
-var key = code.split('=')[1];
-var typeId = code.split('=')[1];

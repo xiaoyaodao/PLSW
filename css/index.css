@@ -4,6 +4,9 @@
   margin: 0;
   list-style-type: none;
   text-decoration: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
   outline: none;
 }
 
@@ -11,6 +14,7 @@ body {
   width: 100%;
   height: 100%;
   font-family: "PingFangSC-Regular";
+  background: #fff;
 }
 
 .title {
@@ -48,11 +52,12 @@ body {
 
 main {
   width: 100%;
-  position: absolute;
+  position: fixed;
   top: .9rem;
   bottom: 1rem;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+  height: auto;
 }
 main .loadding {
   width: 100%;
@@ -64,6 +69,37 @@ main .loadding {
   background-size: 2.56rem 2.56rem;
 }
 
+.baseline {
+  width: 100%;
+  height: .2rem;
+  font-size: .2rem;
+  text-align: center;
+  line-height: .2rem;
+  color: #9a9a9a;
+  padding: .3rem 0;
+}
+
+.opacity {
+  -webkit-animation: opacity 0.3s linear;
+  animation: opacity 0.3s linear;
+}
+
+@-webkit-keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 header {
   width: 100%;
   height: 4.66rem;
@@ -224,20 +260,20 @@ section .section-top .section-top-info .section-info-details {
   /* Opera */
 }
 section .section-top .section-top-info .section-info-more {
-  width: 1.24rem;
-  height: .3rem;
+  width: .7rem;
+  height: .4rem;
   font-size: .28rem;
-  line-height: .3rem;
+  line-height: .4rem;
   color: #219af4;
-  background: rgba(255, 255, 255, 0.9);
-  text-align: right;
-  position: relative;
-  bottom: .3rem;
-  left: 5.1rem;
-  padding-right: .25rem;
+  background: white;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 section .section-top-content {
   width: 100%;
+  height: auto;
   padding: .36rem .58rem .72rem .58rem;
   box-sizing: border-box;
 }

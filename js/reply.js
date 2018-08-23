@@ -1,47 +1,62 @@
 
 $(document).ready(function () {
     var search = location.search;//获取评论人的id
-    var commentData = search.slice(1);//获取到id
+    var data = search.slice(1);
+
+    var commentData = data.split('&')[0];//获取到id
     var commentId = commentData.split('=')[1]; //获取到id值
 
+    var page = data.split('&')[1];//获取到页数信息
+    var pageNum = page.split('=')[1];//获取到页数的值
+
+    
     console.log(search);
+    console.log(data);
     console.log(commentData);
     console.log(commentId);
+    console.log(page);
+    console.log(pageNum);
+
+
+    var size = 5;
 
     //加签名
     var data = {
         id:localStorage.getItem('bookKey'),
-        sourceId:2,
-        userId:localStorage.getItem('userKey')      
+        userId:localStorage.getItem('userKey'),
+        sourceId:2, 
+        page:pageNum,
+        pageSize:size         
     }
-
     var md5 = md5Encryption(data,'kB50erIyBe3ci4R7fsuyWuX4Raq7OGMv');
-
 
     $.ajax({
         type: "POST",
-        // url: "https://test.uwooz.com/mxapi/book/getBookInfo?id=1&sourceId=1&signed=0f5978148420a96013e6ec0494b8e18c",
-        url: "https://test.uwooz.com/mxapi/book/getBookInfo?",
-        data: 'id=' +localStorage.getItem('bookKey')+ '&userId=' +localStorage.getItem('userKey') + '&sourceId=2' + '&signed='+md5,
-
+        url: "https://test.uwooz.com/mxapi/book/getBookCommentInfo",
+        data:{
+            userId: localStorage.getItem('userKey'),
+            id:localStorage.getItem('bookKey'),
+            sourceId :'2',
+            page:pageNum ,
+            pageSize:size,
+            signed: md5
+         },
 
         success: function (msg) {
             var data = msg.data;
-          
+            var datasd = data.data;
+
             var commentNode = '';
             var fabulous = '';
             var replyDataNode = '';
             var userInfo = '';
 
-            
-            for(var i = 0; i < data.bookCommentList.length; i++){
-
-                var datas = data.bookCommentList[i];
-
-                 console.log(datas);                
+            for(var i = 0; i < datasd.length; i++){
+               
+                var datas = datasd[i];          
                               
-                
-                if(datas.id == commentId){
+                /* 评论者的相关信息 */
+                if(datas.id == commentId ){
                         
                     commentNode+= '\
                         <div class="main-top">\
@@ -80,9 +95,9 @@ $(document).ready(function () {
                             <div class="main-bottom-right">\
                                 <div class="main-bottom-fabulous">\
                                     <!-- 点赞 -->\
-                                    <div class="main-fabulous-img praise">\
-                                        <img src="./img/favor-small.png" class="praise-img">\
-                                    </div>\
+                                    <div class="main-fabulous-img praise" data-id="'+datas.id+'" data-type ="'+datas.userAssist+'">'+
+                                    (datas.userAssist==true ? '<img src="./img/yizan.png" class="praise-img">' :'<img src="./img/favor-small.png" class="praise-img">')+
+                                    '</div>\
                                     <!-- 点赞的数量 -->\
                                     <p class="main-fabulous-num praise-txt"> '+datas.assistCount+' </p>\
                                     <span class="add-num"><em>+1</em></span>\
@@ -98,12 +113,12 @@ $(document).ready(function () {
                         </div> \
                         ';
 
-                        
+                    /* 回复评论者的相关内容 */ 
                     for(var b = 0; b < datas.bookReplyList.length; b++){
                         var replyData =  datas.bookReplyList[b];
                                             
                         // console.log(datas.bookReplyList.length);                       
-                        console.log(replyData);
+                        // console.log(replyData);
                         // console.log(replyData.userInfo.id);
 
                         replyDataNode+= '\
@@ -134,9 +149,9 @@ $(document).ready(function () {
                                 <div class="section-bottom-right">\
                                     <div class="section-bottom-fabulous">\
                                         <!-- 点赞 -->\
-                                        <div class="section-fabulous-img">\
-                                            <img src="./img/favor-small.png" class="praise-img">\
-                                        </div>\
+                                        <div class="section-fabulous-img" data-id2="'+replyData.id+'" data-type2 ="'+replyData.userAssist+'">'+
+                                        (replyData.userAssist==true ? '<img src="./img/yizan.png" class="praise-img">' :'<img src="./img/favor-small.png" class="praise-img">')+
+                                        '</div>\
                                         <!-- 点赞的数量 -->\
                                         <p class="section-fabulous-num praise-txt" >'+replyData.assistCount+'</p>\
                                         <span class="add-num"><em>+1</em></span>\
@@ -146,10 +161,10 @@ $(document).ready(function () {
                         </div>\
                         '
                     }
-                    // console.log(fabulous)  
-                    fabulous+=datas.bookReplyList.length;
-                    userInfo+=datas.userInfo.id;
-                    localStorage.setItem('userInfo', userInfo);
+                  
+                    fabulous += datas.bookReplyList.length; // 回复的条数
+                    userInfo += datas.userInfo.id; // 评论人的id
+                    localStorage.setItem('userInfo', userInfo); //将评论id的存起来
                     
                 } 
                          
@@ -158,15 +173,15 @@ $(document).ready(function () {
 
             $('.main-comment-info').append(commentNode);
 
-             // 显示分数
+             //  顶部显示的分数
              $(".score_Show p").each(function(index, element) {
                 var num = $(this).attr("tip");
                 var www = num*1*.14 + "rem";
                 $(this).css("width",www);
                 $(this).parent(".score_Show").siblings("span").text(num);
             });
-            // 点赞
-            $(".praise").click(function(){
+            // 顶部的点赞
+            $(".praise").click(function(e){
                 // 获取图片id 
                 var praise_img = $(this).children(".praise-img");
                 // 加一减一的数字
@@ -176,30 +191,61 @@ $(document).ready(function () {
                 // 将数字添加到 id为praise-txt的p标签中；
                 var num = parseInt(praise_txt.text());
 
-                // console.log(text_box)
-
-                if(praise_img.attr("src") == ("img/yizan.png")){            
+                if($(this).attr("data-type") == 'true'){            
                     $(this).html("<img src='./img/favor-small.png' class='animation praise-img' />");
                     praise_txt.removeClass("hover");
                     text_box.show().html("<em class='add-animation'>-1</em>");
                     $(this).parent().children(".add-num").children(".add-animation").removeClass("hover");
                     num -=1;
                     praise_txt.text(num)
+                    $(this).attr("data-type", "false");
+
                 }else{            
                     $(this).html("<img src='img/yizan.png' class='animation praise-img' />");
                     praise_txt.addClass("hover");
                     text_box.show().html("<em class='add-animation'>+1</em>");                       
                     $(this).parent().children(".add-num").children(".add-animation").addClass("hover");
                     num +=1;
-                    praise_txt.text(num)
+                    praise_txt.text(num);
+                    $(this).attr("data-type", "true");
                 }
+
+                //顶部的点赞的 加签名
+                var datad = {
+                    bookCommentId:e.currentTarget.dataset.id,//评论id
+                    userId:localStorage.getItem('userKey'),
+                    sourceId:2,                                
+                }
+                var md5 = md5Encryption(datad,'kB50erIyBe3ci4R7fsuyWuX4Raq7OGMv');
+
+             
+                console.log( e.currentTarget.dataset.id);
+                console.log( e.currentTarget.dataset.type);
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'https://test.uwooz.com/mxapi/book/addAssist?',
+                    data: "bookCommentId=" + e.currentTarget.dataset.id +"&userId=" + localStorage.getItem('userKey') +'&sourceId=2'+'&signed='+md5,
+                    
+                    success: function (res) {
+                        if(res.errorCode === 200){                          
+                            $(this).attr("data-type", "true");                                                       
+                            // alert(res.message);
+
+                        }else{
+                            $(this).attr("data-type", "false");                                                           
+                            // alert(res.message);
+                        }                                      
+                    }
+
+                })
             });
-            
+                   
             //  回复评论者的内容详情
             $('section').append(replyDataNode);
 
             // 回复评论者的点赞
-            $(".section-fabulous-img").click(function(){
+            $(".section-fabulous-img").click(function(e){
                 // 获取图片id 
                 var praise_img = $(this).children(".praise-img");
                 // 加一减一的数字
@@ -208,22 +254,56 @@ $(document).ready(function () {
                 var praise_txt = $(this).parent().children(".praise-txt");
                 // 将数字添加到 为praise-txt的p标签中；
                 var num = parseInt(praise_txt.text());
-
-                if(praise_img.attr("src") == ("img/yizan.png")){            
+             
+                if($(this).attr("data-type") == 'true'){            
                     $(this).html("<img src='./img/favor-small.png' class='animation praise-img' />");
                     praise_txt.removeClass("hover");
                     text_box.show().html("<em class='add-animation'>-1</em>");
                     $(this).parent().children(".add-num").children(".add-animation").removeClass("hover");
                     num -=1;
                     praise_txt.text(num)
+                    $(this).attr("data-type", "false");
+
                 }else{            
                     $(this).html("<img src='img/yizan.png' class='animation praise-img' />");
                     praise_txt.addClass("hover");
                     text_box.show().html("<em class='add-animation'>+1</em>");                       
                     $(this).parent().children(".add-num").children(".add-animation").addClass("hover");
                     num +=1;
-                    praise_txt.text(num)
+                    praise_txt.text(num);
+                    $(this).attr("data-type", "true");
                 }
+
+                 // 回复评论者的点赞 加签名
+                var datad = {
+                    bookCommentId:e.currentTarget.dataset.id2,//评论id
+                    userId:localStorage.getItem('userKey'),
+                    sourceId:2,                                
+                }
+                var md5 = md5Encryption(datad,'kB50erIyBe3ci4R7fsuyWuX4Raq7OGMv');
+
+                console.log("&bookCommentId=" +e.currentTarget.dataset.id2 +"&userId=" + localStorage.getItem('userKey') +'&sourceId=2'+'&signed='+md5);
+                console.log( e.currentTarget.dataset.id2);
+                console.log( e.currentTarget.dataset.type2);
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'https://test.uwooz.com/mxapi/book/addAssist?',
+                    data: "bookCommentId=" + e.currentTarget.dataset.id2 +"&userId=" + localStorage.getItem('userKey') +'&sourceId=2'+'&signed='+md5,
+                    
+                    success: function (res) {
+                        if(res.errorCode === 200){                          
+                            $(this).attr("data-type", "true");                                                       
+                            console.log(res.message);
+
+                        }
+                        if(res.errorCode === 201){
+                            $(this).attr("data-type", "false");                                                                   
+                            console.log(res.message);
+                        }  
+                    }
+            
+                })
             });
 
             // 回复的条数
@@ -234,49 +314,53 @@ $(document).ready(function () {
 
         },
 
-
-
-
         error: function(error){
             alert('页面加载出错，请刷新重试！');    
         }
     })
 
- $('#sendOut').click(function (e) {   
-    var content = $("input").val();
+    // 回复评论
+    $('#sendOut').click(function (e) {   
+        var content = $("input").val();
   
-    if (content === '') {
-      alert('内容不能为空!');
-      return;
-    }
+        if (content === '') {
+        alert('内容不能为空!');
+        return;
+        }
 
-    //加签名
-    var data = {
-        content:content,
-        bookCoreId:localStorage.getItem('bookKey'),
-        reguseId:localStorage.getItem('userInfo'),//评论人的id
-        userId: localStorage.getItem('userKey'),
-        sourceId:2,
-        type:commentId//评论id
-    }
+        //加签名
+        var data = {
+            content:content,
+            bookCoreId:localStorage.getItem('bookKey'),
+            reguseId:localStorage.getItem('userInfo'),//评论人的id
+            userId: localStorage.getItem('userKey'),
+            sourceId:2,
+            type:commentId//评论id
+        }
 
-    var md5 = md5Encryption(data,'kB50erIyBe3ci4R7fsuyWuX4Raq7OGMv');
-    console.log(md5);
+        var md5 = md5Encryption(data,'kB50erIyBe3ci4R7fsuyWuX4Raq7OGMv');
+        console.log(md5);
 
-   $.ajax({
+        $.ajax({
             type: "POST",
-            url: "https://test.uwooz.com/mxapi/book/addComment?",
-            data: "content=" + content + "&bookCoreId=" + localStorage.getItem('bookKey') +"&userId=" + localStorage.getItem('userKey') +"&reguseId=" +localStorage.getItem('userInfo') + "&type=" +commentId + "&sourceId=2"+"&signed="+ md5,
-    
+            url: "https://test.uwooz.com/mxapi/book/addComment?",           
+            data:{
+                content:content,
+                bookCoreId:localStorage.getItem('bookKey'),
+                reguseId:localStorage.getItem('userInfo'),
+                userId: localStorage.getItem('userKey'),
+                sourceId:2,
+                type:commentId,
+                signed:md5
+            },
     
             success: function (msg) {
 
                 if (msg.errorCode === 200) {
-                    alert('评论成功！');
-                        // 跳转 相当于刷新
-                        // location.assign('./reply.html');  
+                    // alert('评论成功！');
+                    window.location.reload();
                 }else{
-                    alert('评论失败！');   
+                    // alert('评论失败！');   
                 }        
                        
     

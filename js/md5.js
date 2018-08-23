@@ -1,10 +1,23 @@
+// 此方法勿动
 function hex_md5(string) {
-    var x = Array();
+    var x = [];
     var k, AA, BB, CC, DD, a, b, c, d;
-    var S11 = 7, S12 = 12, S13 = 17, S14 = 22;
-    var S21 = 5, S22 = 9, S23 = 14, S24 = 20;
-    var S31 = 4, S32 = 11, S33 = 16, S34 = 23;
-    var S41 = 6, S42 = 10, S43 = 15, S44 = 21;
+    var S11 = 7,
+        S12 = 12,
+        S13 = 17,
+        S14 = 22;
+    var S21 = 5,
+        S22 = 9,
+        S23 = 14,
+        S24 = 20;
+    var S31 = 4,
+        S32 = 11,
+        S33 = 16,
+        S34 = 23;
+    var S41 = 6,
+        S42 = 10,
+        S43 = 15,
+        S44 = 21;
     string = Utf8Encode(string);
     x = ConvertToWordArray(string);
     a = 0x67452301;
@@ -88,9 +101,11 @@ function hex_md5(string) {
     var temp = WordToHex(a) + WordToHex(b) + WordToHex(c) + WordToHex(d);
     return temp;
 }
+
 function RotateLeft(lValue, iShiftBits) {
     return (lValue << iShiftBits) | (lValue >>> (32 - iShiftBits));
 }
+
 function AddUnsigned(lX, lY) {
     var lX4, lY4, lX8, lY8, lResult;
     lX8 = (lX & 0x80000000);
@@ -111,34 +126,43 @@ function AddUnsigned(lX, lY) {
         return (lResult ^ lX8 ^ lY8);
     }
 }
+
 function F(x, y, z) {
     return (x & y) | ((~x) & z);
 }
+
 function G(x, y, z) {
     return (x & z) | (y & (~z));
 }
+
 function H(x, y, z) {
     return (x ^ y ^ z);
 }
+
 function I(x, y, z) {
     return (y ^ (x | (~z)));
 }
+
 function FF(a, b, c, d, x, s, ac) {
     a = AddUnsigned(a, AddUnsigned(AddUnsigned(F(b, c, d), x), ac));
     return AddUnsigned(RotateLeft(a, s), b);
 }
+
 function GG(a, b, c, d, x, s, ac) {
     a = AddUnsigned(a, AddUnsigned(AddUnsigned(G(b, c, d), x), ac));
     return AddUnsigned(RotateLeft(a, s), b);
 }
+
 function HH(a, b, c, d, x, s, ac) {
     a = AddUnsigned(a, AddUnsigned(AddUnsigned(H(b, c, d), x), ac));
     return AddUnsigned(RotateLeft(a, s), b);
 }
+
 function II(a, b, c, d, x, s, ac) {
     a = AddUnsigned(a, AddUnsigned(AddUnsigned(I(b, c, d), x), ac));
     return AddUnsigned(RotateLeft(a, s), b);
 }
+
 function ConvertToWordArray(string) {
     var lWordCount;
     var lMessageLength = string.length;
@@ -161,8 +185,11 @@ function ConvertToWordArray(string) {
     lWordArray[lNumberOfWords - 1] = lMessageLength >>> 29;
     return lWordArray;
 }
+
 function WordToHex(lValue) {
-    var WordToHexValue = "", WordToHexValue_temp = "", lByte, lCount;
+    var WordToHexValue = "",
+        WordToHexValue_temp = "",
+        lByte, lCount;
     for (lCount = 0; lCount <= 3; lCount++) {
         lByte = (lValue >>> (lCount * 8)) & 255;
         WordToHexValue_temp = "0" + lByte.toString(16);
@@ -170,6 +197,7 @@ function WordToHex(lValue) {
     }
     return WordToHexValue;
 }
+
 function Utf8Encode(string) {
     var utftext = "";
     for (var n = 0; n < string.length; n++) {
