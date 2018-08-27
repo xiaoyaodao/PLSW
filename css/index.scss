@@ -17,7 +17,7 @@ body{
 }
 
 
-
+// 头部信息
 .title {
     width:100%;
     height: .9rem;
@@ -102,7 +102,7 @@ main {
         opacity:1;
     }
 }
-
+// 书的信息，背景，名字等！
 header{
     width:100%;
     height:4.66rem;
@@ -166,7 +166,7 @@ header{
     }
 }
 
-
+// 评分 评论人数，阅读人数！
 .score{
     width:100%;
     height:2.44rem;
@@ -270,10 +270,10 @@ section{
                color:#2f3235;
                overflow: hidden;
 
-                transition: height 2s;
-                -moz-transition: height 2s; /* Firefox 4 */
-                -webkit-transition: height 2s; /* Safari 和 Chrome */
-                -o-transition: height 2s; /* Opera */ 
+                transition: height 0.2s;
+                -moz-transition: height 0.2s; /* Firefox 4 */
+                -webkit-transition: height 0.2s; /* Safari 和 Chrome */
+                -o-transition: height 0.2s; /* Opera */ 
            }
            .section-info-more{  
                 width: .7rem;
@@ -551,13 +551,15 @@ section{
                         }
                     }                      
                 }
+                // 举报功能
                 .article-more{
                     width:.3rem;
                     height:.09rem;
                     display: flex;
                     align-self: flex-start;
                     padding-top:.08rem;
-                    a{
+                    position: relative;
+                    .spot-img{
                         display: flex;
                         width:.3rem;
                         height:.09rem;
@@ -568,7 +570,40 @@ section{
                             height:.09rem;
                         }
                     }
-                    
+                    // 遮罩层
+                    .eject-wrap{
+                     
+                        width:1.6rem;
+                        height:2rem;
+                        background:rgba(96,96,96,0.5);
+                        display:none;
+                        position: absolute;
+                        top:.2rem;
+                        right:.3rem;
+                        // z-index:9999;
+
+                        // 点击弹出
+                        .popup{
+                          
+                            width:1.6rem;
+                            height:2rem;
+                            font-size: .3rem;
+                           color: red;
+                            .popup-info{
+                                width:100%;
+                                height:1rem;
+                                line-height: 1rem;
+                                text-align: center;
+                            }
+                            .close{
+                                width:100%;
+                                height:1rem;
+                                line-height: 1rem;
+                                text-align: center;
+                            }
+                        }
+
+                    }
                 }
     
             }

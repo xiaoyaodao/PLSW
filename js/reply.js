@@ -77,9 +77,21 @@ $(document).ready(function () {
                                     <span></span>\
                                 </div>\
                             </div>\
+                            <!-- 举报 -->\
                             <div class="main-more">\
-                                <img src="./img/spot-h.png" alt="">\
+                                <div class="spot-img">\
+                                    <img src="./img/spot-h.png" alt="">\
+                                </div>\
+                                <!-- 遮罩层 -->\
+                                <div class="eject-wrap">\
+                                    <!-- 点击弹出 -->\
+                                    <div class="popup">\
+                                        <div class="popup-info">举报</div>\
+                                        <div class="close">取消</div>\
+                                    </div>\
+                                </div>\
                             </div>\
+                        </div>\
                         </div>\
                         <!-- 评论内容 -->\
                         <div class="main-content">\
@@ -134,9 +146,20 @@ $(document).ready(function () {
                                     '+ (replyData.userInfo !== null ? replyData.userInfo.nickname :  '我忘了...')+'\
                                     </p>\
                                 </div>\
+                                <!-- 举报 -->\
                                 <div class="section-more">\
-                                    <img src="./img/spot-h.png" alt="">\
-                                </div> \
+                                    <div class="section-spot-img">\
+                                        <img src="./img/spot-h.png" alt="">\
+                                    </div>\
+                                    <!-- 遮罩层 -->\
+                                    <div class="section-eject-box">\
+                                        <!-- 点击弹出 -->\
+                                        <div class="section-popup">\
+                                            <div class="section-popup-info">举报</div>\
+                                            <div class="section-close">取消</div>\
+                                        </div>\
+                                    </div>\
+                                </div>\
                             </div>\
                             <!-- 回复评论者的内容详情--> \
                             <div class="section-content">\
@@ -165,13 +188,49 @@ $(document).ready(function () {
                     fabulous += datas.bookReplyList.length; // 回复的条数
                     userInfo += datas.userInfo.id; // 评论人的id
                     localStorage.setItem('userInfo', userInfo); //将评论id的存起来
-                    
+
                 } 
                          
             }
 
 
             $('.main-comment-info').append(commentNode);
+
+             //点击.spot-img时要阻止冒泡，否则.eject-wrap是不显示的，
+            //因为冒泡了，会执行到下面的方法。
+            function stopPropagation(e) {
+                var ev = e || window.event;
+                if (ev.stopPropagation) {
+                    ev.stopPropagation();
+                }
+                else if (window.event) {
+                    window.event.cancelBubble = true;//兼容IE
+                }
+            }
+            
+            // 获取元素，设置单击事件
+            $('.spot-img').on( 'click', function(e){
+                $(this).parent().children(".eject-wrap").show();
+                stopPropagation(e);
+            });
+         
+            // 单击关闭按钮，隐藏元素
+            $('.close').on( 'click', function(){
+                $(this).parent().parent().hide();  
+
+            });
+                
+            // 鼠标在div里操作不隐藏
+            $(".eject-wrap").click(function (e) {
+                stopPropagation(e);
+            });
+
+           
+            // 点击div之外的地方 div隐藏
+            $(document).bind("click", function(){
+                $(".eject-wrap").hide();     
+            });
+          
 
              //  顶部显示的分数
              $(".score_Show p").each(function(index, element) {
@@ -244,6 +303,23 @@ $(document).ready(function () {
             //  回复评论者的内容详情
             $('section').append(replyDataNode);
 
+        
+            $('.section-more').off('click').on('click', function(e){
+                $(this).children(".section-eject-box").show();
+                stopPropagation(e);
+            });
+            $('.section-close').off("click").on( 'click', function(){
+                $(this).parent().parent().hide();                      
+            });
+            
+            $(".section-eject-box").click(function (e) {
+                stopPropagation(e);
+            })
+            
+            $(document).bind("click", function(){
+                $(".section-eject-box").hide();     
+            });
+
             // 回复评论者的点赞
             $(".section-fabulous-img").click(function(e){
                 // 获取图片id 
@@ -282,7 +358,7 @@ $(document).ready(function () {
                 }
                 var md5 = md5Encryption(datad,'kB50erIyBe3ci4R7fsuyWuX4Raq7OGMv');
 
-                console.log("&bookCommentId=" +e.currentTarget.dataset.id2 +"&userId=" + localStorage.getItem('userKey') +'&sourceId=2'+'&signed='+md5);
+                console.log("&bookCommentId=" +e.currentTarget.dataset.id2 +", &userId=" + localStorage.getItem('userKey') +', &sourceId=2'+', &signed='+md5);
                 console.log( e.currentTarget.dataset.id2);
                 console.log( e.currentTarget.dataset.type2);
 

@@ -251,12 +251,12 @@ section .section-top .section-top-info .section-info-details {
   line-height: .5rem;
   color: #2f3235;
   overflow: hidden;
-  transition: height 2s;
-  -moz-transition: height 2s;
+  transition: height 0.2s;
+  -moz-transition: height 0.2s;
   /* Firefox 4 */
-  -webkit-transition: height 2s;
+  -webkit-transition: height 0.2s;
   /* Safari 和 Chrome */
-  -o-transition: height 2s;
+  -o-transition: height 0.2s;
   /* Opera */
 }
 section .section-top .section-top-info .section-info-more {
@@ -516,16 +516,44 @@ section article .article-comment-info .article-top .article-more {
   display: flex;
   align-self: flex-start;
   padding-top: .08rem;
+  position: relative;
 }
-section article .article-comment-info .article-top .article-more a {
+section article .article-comment-info .article-top .article-more .spot-img {
   display: flex;
   width: .3rem;
   height: .09rem;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
-section article .article-comment-info .article-top .article-more a img {
+section article .article-comment-info .article-top .article-more .spot-img img {
   width: .3rem;
   height: .09rem;
+}
+section article .article-comment-info .article-top .article-more .eject-wrap {
+  width: 1.6rem;
+  height: 2rem;
+  background: rgba(96, 96, 96, 0.5);
+  display: none;
+  position: absolute;
+  top: .2rem;
+  right: .3rem;
+}
+section article .article-comment-info .article-top .article-more .eject-wrap .popup {
+  width: 1.6rem;
+  height: 2rem;
+  font-size: .3rem;
+  color: red;
+}
+section article .article-comment-info .article-top .article-more .eject-wrap .popup .popup-info {
+  width: 100%;
+  height: 1rem;
+  line-height: 1rem;
+  text-align: center;
+}
+section article .article-comment-info .article-top .article-more .eject-wrap .popup .close {
+  width: 100%;
+  height: 1rem;
+  line-height: 1rem;
+  text-align: center;
 }
 section article .article-comment-info .article-content {
   width: 100%;

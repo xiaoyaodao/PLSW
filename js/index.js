@@ -272,11 +272,19 @@ $(document).ready(function(){
                                                 <span></span>\
                                             </div>\
                                         </div>\
-                                        <!-- 跳转到评论详情页 -->\
+                                        <!-- 举报 -->\
                                         <div class="article-more">\
-                                            <a href="javascript:void(0);">\
+                                            <div class="spot-img">\
                                                 <img src="./img/spot-h.png" alt="">\
-                                            </a>\
+                                            </div>\
+                                            <!-- 遮罩层 -->\
+                                            <div class="eject-wrap">\
+                                                <!-- 点击弹出 -->\
+                                                <div class="popup">\
+                                                    <div class="popup-info">举报</div>\
+                                                    <div class="close">取消</div>\
+                                                </div>\
+                                            </div>\
                                         </div>\
                                     </div>\
                                     <div class="article-content">\
@@ -314,9 +322,42 @@ $(document).ready(function(){
                           
                         }
                        
-                        $('#newsList').append(comment);                    
+                        $('#newsList').append(comment); 
+
+                        //点击.spot-img时要阻止冒泡，否则.eject-wrap是不显示的，
+                        //因为冒泡了，会执行到下面的方法。
+                        function stopPropagation(e) {
+                            var ev = e || window.event;
+                            if (ev.stopPropagation) {
+                                ev.stopPropagation();
+                            }
+                            else if (window.event) {
+                                window.event.cancelBubble = true;//兼容IE
+                            }
+                        }
                         
-                        
+                        // 获取元素，设置单击事件
+                        $('.spot-img').off("click").on( 'click', function(e){
+                            $(this).parent().children(".eject-wrap").show();
+                            stopPropagation(e);
+                        });
+
+                        // 单击关闭按钮，隐藏元素
+                        $('.close').off("click").on( 'click', function(e){
+                            $(this).parent().parent().hide();                          
+                        });
+
+                        // 鼠标在div里操作不隐藏
+                        $(".eject-wrap").click(function (e) {
+                            stopPropagation(e);
+                        });
+
+                        // 点击div之外的地方 div隐藏
+                        $(document).bind("click", function(){
+                            $(".eject-wrap").hide();     
+                        });
+                      
+
                         // 显示分数
                         $(".score_Show p").each(function(index, element) {
                             var num = $(this).attr("tip");
@@ -326,7 +367,7 @@ $(document).ready(function(){
                         });
 
                         // 点赞
-                        $('.praise').on('click', function(e){
+                        $('.praise').off("click").on('click', function(e){
                             // 获取图片id 
                             var praise_img = $(this).children(".praise-img");
                             // 加一减一的数字
