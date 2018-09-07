@@ -17,45 +17,10 @@ body{
 }
 
 
-// 头部信息
-.title {
-    width:100%;
-    height: .9rem;
-    padding: 0 .5rem;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color:#323232;
-    .return {
-        height: 100%;
-        width: 0.5rem;
-        display: flex;
-        align-items: center;
-        img {
-            height: .4rem;
-        }
-    }
-    .title-info {
-        font-size: .35rem;
-        color: white;
-    }
-    .spot {
-        width: .54rem;
-        height: .08rem;
-        display: flex;
-        img {
-            width: .54rem;
-            height: .08rem;
-        }
-    }
-}
-
 main {
     width:100%;
     position: fixed;
-    top: .9rem;
-    // top: 0;
+    top: 0;
     bottom: 1rem;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
@@ -196,17 +161,17 @@ header{
 
         .atar_Show {
             background: url(../img/score-star-n.png)repeat-x;
-            background-size:.48rem .32rem;
-            width: 2.4rem;
+            background-size:.5rem .32rem;
+            width: 2.5rem;
             height: .32rem;
             position: relative;
 
             p {
                 background: url(../img/score-star.png)repeat-x;
-                background-size:.48rem .32rem;
+                background-size:.5rem .32rem;
                 left: 0;
                 height:.32rem;
-                width: 2.4rem;
+                width: 2.5rem;
             }
         }
     }    
@@ -279,14 +244,14 @@ section{
                 width: .7rem;
                 height: .4rem;
                 font-size: .28rem;
-                line-height: .4rem;
+                line-height: .5rem;
                 color: #219af4;
                 background: rgba(255, 255, 255, 1);
                 text-align: center;
                 position: absolute;
                 bottom: 0;
                 right: 0;
-           }
+            }
        }
     }
 
@@ -479,11 +444,12 @@ section{
     article{
         width:100%;
         height:auto;
-        // height: 100%;
 
         .article-comment-info{
             width:100%;
-            height:3.5rem;
+            height:auto!important; 
+            height:1.74rem; 
+            min-height:1.74rem;
             padding:0 .42rem 0 .5rem;
             box-sizing: border-box;
 
@@ -510,7 +476,6 @@ section{
                         font-size: .3rem;
                         color:#5a6e96;
                         padding-bottom:.24rem;
-                        // padding-left:.02rem;
                     }
    
                     .clearfix::after{ 
@@ -537,14 +502,14 @@ section{
                             width:1.4rem;
                             height: .2rem;
                             background: url(../img/header-star-null.png)repeat-x;
-                            background-size:.28rem .2rem;                                
+                            background-size:.3rem .2rem;                                
                             position: relative;
                 
                             p {
                                 width:1.4rem;
                                 height:.2rem;
                                 background: url(../img/header-star.png)repeat-x;
-                                background-size:.28rem .2rem;
+                                background-size:.3rem .2rem;
                                 left: 0;
                                 
                             }
@@ -558,6 +523,7 @@ section{
                     display: flex;
                     align-self: flex-start;
                     padding-top:.08rem;
+                    padding-right: .1rem;
                     position: relative;
                     .spot-img{
                         display: flex;
@@ -579,16 +545,14 @@ section{
                         display:none;
                         position: absolute;
                         top:.2rem;
-                        right:.3rem;
-                        // z-index:9999;
+                        right:.5rem;
 
                         // 点击弹出
-                        .popup{
-                          
+                        .popup{                         
                             width:1.6rem;
                             height:2rem;
                             font-size: .3rem;
-                           color: red;
+                            color: red;
                             .popup-info{
                                 width:100%;
                                 height:1rem;
@@ -602,6 +566,90 @@ section{
                                 text-align: center;
                             }
                         }
+                        /* 举报详情内容 */
+                        .popup-eject{
+                            width:100%;
+                            height:100%;
+                            background:rgba(255,255,255,1);;
+                            display:none;
+                            position: fixed;
+                            top:0;
+                            right:0;
+                            bottom:0;
+                            left:0;
+                            z-index:9999;
+                            /* 举报返回 */
+                            .popup-eject-return {
+                                width:100%;
+                                height: .9rem;
+                                padding: 0 .5rem;
+                                box-sizing: border-box;
+                                display: flex;
+                                align-items: center;
+                                background-color:#0288D1;
+                                .return-img{
+                                    height: 100%;
+                                    width: 0.5rem;
+                                    display: flex;
+                                    align-items: center;
+                                    img{                         
+                                        height: .4rem;
+                                    }
+                                }
+                            
+                                .popup-eject--info {
+                                    font-size: .35rem;
+                                    color: white;
+                                }
+                            
+                            }
+                            /* 举报内容 */
+                            .popup-content-info{
+                                width:90%;
+                                height:auto;
+                                margin:0 auto;
+                                font-size: .3rem;
+                                padding: .4rem 0;
+                                .popup-content-info-z{
+                                    width:100%;
+                                    height:.4rem;
+                                    display:flex;
+                                    align-items:center;
+                                    padding-bottom:.2rem;
+                                    .popup-radio{
+                                        width:.4rem;
+                                        height:.4rem;
+                                        padding-right:.1rem;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        input{
+                                            width:.34rem;
+                                            height:.34rem; 
+                                        }
+                                    }
+                                }
+                                .popup-content-info-1{
+                                    padding-top:.3rem;
+                                }
+                            }
+                            /* 提交 */
+                            .submission{
+                                width:100%;
+                                height:.6rem;
+                                padding-top:.3rem;
+                                border-top:.01rem solid #ccc;
+                                display: flex;
+                                justify-content:center;
+                                input{
+                                    width:90%;
+                                    background-color:#0288D1;
+                                    font-size: .32rem;
+                                    color:#fff;
+                                    border:0;
+                                }
+                            }
+                        }
 
                     }
                 }
@@ -610,178 +658,185 @@ section{
     
             .article-content{
                 width:100%;
-                height:1.68rem;
+                height:auto!important; 
                 padding:.28rem 0 .26rem 0;
     
                 .article-content-info{
                     width:100%;
-                    height:1.68rem;
+                    height: auto!important;
+                    height:.42rem; 
+                    min-height:.42rem;
                     font-size: .28rem;
-                    color:#2f3235;
                     line-height: .42rem;
-                    overflow:auto;
+                    color:#2f3235;
                 }
             }
+
             .article-bottom{
-               width:100%;
-               height:.26rem;
-                display: flex;
-                justify-content:space-between;
-                align-items: center;
-               .article-bottom-time{
-                //    width:1.6rem;
-                    font-size: .24rem;
-                    color:#9a9a9a;
-                    display: flex;
-                    .article-time-data{
-                        padding-right:.26rem;
-                    }
-                }
-    
-                .article-bottom-right{
-                    width:1.68rem;
-                    height:.26rem;
-                    font-size: .24rem;
-                    color:#9a9a9a;
-                    display: flex;
-                    align-items: center;
-                    padding-right:.24rem;
-                    position: relative;
-    
-                    .article-bottom-fabulous{
-                        height:.24rem;
-                        display: flex;
-                        align-items: center;
-                        margin-right: .38rem;
-                        box-sizing: border-box;
-                        align-items: center;
-
-                        .article-fabulous-img{
-                            width:.25rem;
-                            height:.24rem;
-                            display: flex;
-                            padding-right:.12rem;
-                            cursor: pointer;
-                            
-                            img{
-                                width:.25rem;
-                                height:.24rem;
-                                display:block;
-                            }
-
-                            img.animation{
-                                animation: myfirst 0.5s;
-                                -moz-animation: myfirst 0.5s;	/* Firefox */
-                                -webkit-animation: myfirst 0.5s;	/* Safari 和 Chrome */
-                                -o-animation: myfirst 0.5s;	/* Opera */
-                            }
-                        }
-
-                        .add-num{
-                            display:none;
-                    
-                            .add-animation{
-                                color: #000;
-                                position:absolute;
-                                top:-.2rem;
-                                left: .1rem;
-                                font-size: .15rem;
-                                opacity: 0;
-                                filter: Alpha(opacity=0);
-                                -moz-opacity:0;
-                                animation: mypraise 0.5s ;
-                                -moz-animation: mypraise 0.5s ;	/* Firefox */
-                                -webkit-animation: mypraise 0.5s ;	/* Safari 和 Chrome */
-                                -o-animation: mypraise 0.5s ;	/* Opera */
-                                font-style:normal;
-                            }
-                        }
-
-                        .praise-txt.hover{
-                            color: #EB4F38;
-                        }
-                    
-                        /*点赞图标放大动画开始*/
-                    
-                        @-webkit-keyframes myfirst 
-                        {
-                            0%{
-                                width:.25rem;
-                                height:.24rem;
-                            }
-                            50%{
-                                width:.35rem;
-                                height:.34rem;
-                            }
-                            100% {
-                                width:.24rem;
-                                height:.25rem
-                            }
-                        }                  
-                    
-                        /*点赞图标放大动画结束*/
-                        /*点赞数量加减动画开始*/
-                    
-                        @-webkit-keyframes mypraise
-                        {
-                            0%{
-                                top:-.15rem;
-                                opacity: 0;
-                                filter: Alpha(opacity=0);
-                                -moz-opacity:0;
-                            }
-                            25%{
-                                top:-.20rem;
-                                opacity: 0.5;
-                                filter: Alpha(opacity=50);
-                                -moz-opacity:0.5;
-                            }
-                            50%{
-                                top:-.25rem;
-                                opacity: 1;
-                                filter: Alpha(opacity=100);
-                                -moz-opacity:1;
-                            }
-                            75%{
-                                top:-.30rem;
-                                opacity: 0.5;
-                                filter: Alpha(opacity=50);
-                                -moz-opacity:0.5;
-                            }
-                            100% {
-                                top:-.35rem;
-                                opacity: 0;
-                                filter: Alpha(opacity=0);
-                                -moz-opacity:0;
-                            }
-                        }
-                    
-                        /*点赞数量加减动画结束*/
-                        /*动态点赞结束*/
-                       
-                    }
-                    .article-bottom-comment{
-                        height:.24rem;
-                        display: flex;
-                        align-items: flex-start;
-                        .article-comment-img{
-                            width:.25rem;
-                            height:.24rem;
-                            display: flex;
-                            padding-right:.12rem;
-                            img{
-                                width:.25rem;
-                                height:.24rem;
-                            }
-                        }
-                        .article-comment-num{
-                            height:.24rem;
-                            line-height: .2rem;
-                        }
-                    }
-                }
-    
-            }
+                width:100%;
+                height:.3rem;
+                 display: flex;
+                 justify-content:space-between;
+                 align-items: center;
+                .article-bottom-time{
+                 //    width:1.6rem;
+                     font-size: .24rem;
+                     color:#9a9a9a;
+                     display: flex;
+                     .article-time-data{
+                         padding-right:.26rem;
+                     }
+                 }
+     
+                 .article-bottom-right{
+                     width:auto;
+                     height:.3rem;
+                     font-size: .24rem;
+                     color:#9a9a9a;
+                     display: flex;
+                     align-items: center;
+                     position: relative;
+     
+                     .article-bottom-fabulous{
+                         // width:.5rem;
+                         width:.76rem;
+                         height:.3rem;
+                         display: flex;
+                         align-items: center;
+                         margin-right: .2rem;
+                         box-sizing: border-box;
+                         .article-fabulous-img{
+                             width:.26rem;
+                             height:.3rem;
+                             padding-right:.12rem;
+                             cursor: pointer;
+                             
+                             img{
+                                 width:.24rem;
+                                 height:.24rem;
+                                 display:block;
+                             }
+ 
+                             img.animation{
+                                 animation: myfirst 0.5s;
+                                 -moz-animation: myfirst 0.5s;	/* Firefox */
+                                 -webkit-animation: myfirst 0.5s;	/* Safari 和 Chrome */
+                                 -o-animation: myfirst 0.5s;	/* Opera */
+                             }
+                         }
+                         .article-fabulous-num{
+                             display: flex;
+                             align-items: center;
+                             width:.38rem;
+                             height:.3rem;
+                         }
+                         .add-num{
+                             display:none;
+                     
+                             .add-animation{
+                                 color: #000;
+                                 position:absolute;
+                                 top:-.2rem;
+                                 left: .1rem;
+                                 font-size: .15rem;
+                                 opacity: 0;
+                                 filter: Alpha(opacity=0);
+                                 -moz-opacity:0;
+                                 animation: mypraise 0.5s ;
+                                 -moz-animation: mypraise 0.5s ;	/* Firefox */
+                                 -webkit-animation: mypraise 0.5s ;	/* Safari 和 Chrome */
+                                 -o-animation: mypraise 0.5s ;	/* Opera */
+                                 font-style:normal;
+                             }
+                         }
+ 
+                         .praise-txt.hover{
+                             color: #EB4F38;
+                         }
+                     
+                         /*点赞图标放大动画开始*/
+                     
+                         @-webkit-keyframes myfirst 
+                         {
+                             0%{
+                                 width:.25rem;
+                                 height:.24rem;
+                             }
+                             50%{
+                                 width:.35rem;
+                                 height:.34rem;
+                             }
+                             100% {
+                                 width:.24rem;
+                                 height:.25rem
+                             }
+                         }                  
+                     
+                         /*点赞图标放大动画结束*/
+                         /*点赞数量加减动画开始*/
+                     
+                         @-webkit-keyframes mypraise
+                         {
+                             0%{
+                                 top:-.15rem;
+                                 opacity: 0;
+                                 filter: Alpha(opacity=0);
+                                 -moz-opacity:0;
+                             }
+                             25%{
+                                 top:-.20rem;
+                                 opacity: 0.5;
+                                 filter: Alpha(opacity=50);
+                                 -moz-opacity:0.5;
+                             }
+                             50%{
+                                 top:-.25rem;
+                                 opacity: 1;
+                                 filter: Alpha(opacity=100);
+                                 -moz-opacity:1;
+                             }
+                             75%{
+                                 top:-.30rem;
+                                 opacity: 0.5;
+                                 filter: Alpha(opacity=50);
+                                 -moz-opacity:0.5;
+                             }
+                             100% {
+                                 top:-.35rem;
+                                 opacity: 0;
+                                 filter: Alpha(opacity=0);
+                                 -moz-opacity:0;
+                             }
+                         }
+                     
+                         /*点赞数量加减动画结束*/
+                         /*动态点赞结束*/
+                        
+                     }
+                     .article-bottom-comment{
+                         width:.64rem;
+                         height:.3rem;
+                         display: flex;
+                         align-items: center;
+                         .article-comment-img{
+                             width:.26rem;
+                             height:.3rem;  
+                             img{
+                                 width:.24rem;
+                                 height:.24rem;
+                             }
+                         }
+                         .article-comment-num{
+                            width:.38rem;
+                            height:.3rem;
+                             display: flex;
+                             align-items: center;
+                             justify-content: center;                           
+                         }
+                     }
+                 }
+     
+             }
         }
 
         .article-comment-info:not(:last-child){

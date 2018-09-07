@@ -1,25 +1,8 @@
 function scoreFun(object,opts){
 	// 默认属性
 	var defaults={
-		fen_d:.45 ,  // 每个a的宽度
+		fen_d:.45,  // 每个a的宽度
 		ScoreGrade:10,  // a的个数
-		types:[
-			   "很不满意",
-		       "差得太离谱，与描述的严重不符，非常不满",
-		       "不满意",
-		       "部分有破损，与描述的不符，不满意",
-		       "一般",
-		       "质量一般",
-		       "没有描述的那么好",
-		       "满意",
-		       "质量不错，与描述基本一致，还是挺满意的",
-		       "非常满意",
-		       "很差",
-		       "差",
-		       "一般",
-		       "好",
-			   "很好"
-		],
 		nameScore:"fenshu",//分数类
 		parent:"star_score",//存放星星的容器
 		attitude:"attitude"//打分的评语
@@ -52,62 +35,33 @@ function scoreFun(object,opts){
 		
 		function(index,element){
 
-			$(this).click(function(){     // 点击事件
+			$(this).on('click', function(){     // 点击事件
 
 				now_cli = index;          // 当前a的索引值
 				show(index,$(this))       //  调用show方法
 				console.log($(this))
 		});
 
-		$(this).mouseenter(function(){    /* mouseenter事件(与 mouseover 事件不同，只有在鼠标指针穿过被选元素时，才会触发 mouseenter 事件。如果鼠标指针穿过任何子元素，同样会触发 mouseover 事件。) */
-			show(index,$(this))
-		});
 
-		$(this).mouseleave(function(){    // mouseleave事件 当鼠标指针离开被选元素时，会发生 mouseleave 事件。
-
-			if(now_cli>=0){ // 当前a的索引值>=0时
-
-				var scor = preA*(parseInt(now_cli)+1);         // 评分
-
-				startParent.find("a").removeClass("clibg");  // 清除a的“clibg”类
-
-				startParent.find("a").eq(now_cli).addClass("clibg"); // eq()选择器，选取索引值为“now_cli”的a，给它加上“clibg”类
-
-				var ww = fen_d*(parseInt(now_cli)+1)+'rem'; // 当前a的宽度
-
-				startParent.find("a").eq(now_cli).css({"width":ww,"left":"0"});  // 给索引值为“now_cli”的a加上宽度“ww”和left值
-
-				if(countScore){
-					countScore.text(scor)
-				} 
-			}else{
-				startParent.find("a").removeClass("clibg");
-
-				if(countScore){
-					countScore.text("")
-				}
-			}
-		})
 	});
 
 	// show方法
 	function show(num,obj){
 
 		var n = parseInt(num)+1;
-		var lefta = num*fen_d;
+		var lefta = num*fen_d;  //fen_d 为每个a的宽度 
 		var ww = fen_d*n+'rem';
 		var scor = preA*n;     // 评分数字
 			
-		(len>5) ? atu = options.types[parseInt(num)] : atu = options.types[parseInt(num)+10]; // 用户态度 与分数相匹配的内容
-			
-		object.find("a").removeClass("clibg");  // 清除所有a的“clibg”类
+		object.find("a").removeClass("clibg");   // 清除所有a的“clibg”类
 
 		obj.addClass("clibg");                  // 给当前a添加“clibg”类
 
 		obj.css({"width":ww,"left":"0",});     // 给当前a添加宽度“ww”和left值
 
-		countScore.text(scor);                 // 显示评分
+		countScore.text(scor);                // 显示评分
 		
-		atti.text(atu);                        // 显示用户态度
-		}
-	};
+		atti.text(atu);                      // 显示用户态度
+	}
+
+};

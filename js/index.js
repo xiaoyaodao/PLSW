@@ -2,7 +2,7 @@
 $(document).ready(function(){
    
   
-    // if(localStorage.getItem('bookKey', bookKey) == null){
+    if(localStorage.getItem('bookKey', bookKey) == null){
 
         var search = location.search;//获取评论人的id
         var data = search.slice(1);
@@ -27,19 +27,19 @@ $(document).ready(function(){
                     if (res.data.data.userId) {
                         localStorage.setItem('userId', res.data.data.userId);
                         console.log(localStorage.getItem('userId'));
-                        // add();
+                        add();
                     }
                 }
 
             }
         });
 
-    // }else{
-    //     add();
+    }else{
+        add();
       
-    // }
+    }
 
-    // function add(){
+    function add(){
       
         //第一个参数"mescroll"对应上面布局结构div的id
         var mescroll = new MeScroll("mescroll", { 
@@ -72,7 +72,7 @@ $(document).ready(function(){
 
         //加签名
         var data = {
-            userId:localStorage.getItem('userKey'),
+            userId:localStorage.getItem('userId'),
             id:localStorage.getItem('bookKey'),
             sourceId:2         
         }
@@ -80,9 +80,9 @@ $(document).ready(function(){
         
         $.ajax({
             type: "POST",
-            url: "https://test.uwooz.com/mxapi/book/getBookInfo?",
+            url: "https://test.uwooz.com/mxapi/book/getBookInfo",
             data:{
-                userId: localStorage.getItem('userKey'),
+                userId: localStorage.getItem('userId'),
                 id:localStorage.getItem('bookKey'),
                 sourceId :'2',             
                 signed: md5
@@ -127,10 +127,11 @@ $(document).ready(function(){
                     </div>\
                 '            
                 $('.score-star').append(scoreStar);
+                
                 // 显示分数
                 $(".atar_Show p").each(function(index, element) {
                     var num = $(this).attr("tip");
-                    var www = num*1* .24 + "rem";
+                    var www = num*1* .25 + "rem";
                     $(this).css("width",www);
                     $(this).parent(".atar_Show").siblings("span").text(num);
                 });
@@ -219,7 +220,7 @@ $(document).ready(function(){
 
             //加签名
             var signData = {
-                userId:localStorage.getItem('userKey'),
+                userId:localStorage.getItem('userId'),
                 sourceId:2, 
                 id:localStorage.getItem('bookKey'),
                 page:pageIndex,
@@ -231,7 +232,7 @@ $(document).ready(function(){
                 type: "GET",
                 url: "https://test.uwooz.com/mxapi/book/getBookCommentInfo",
                 data:{
-                    userId: localStorage.getItem('userKey'),
+                    userId: localStorage.getItem('userId'),
                     id:localStorage.getItem('bookKey'),
                     sourceId:'2',
                     page:pageIndex,
@@ -265,11 +266,12 @@ $(document).ready(function(){
                                             <p class="article-recollections-title">\
                                                 '+ (datas.userInfo !== null ? datas.userInfo.nickname :  '那人忘了...')+'\
                                             </p>\
+                                            <!-- 评论评分 -->\
                                             <div class="article-recollections-score clearfix">\
                                                 <div class="score_Show">\
                                                     <p tip="'+datas.grade+'"></p>\
                                                 </div>\
-                                                <span></span>\
+                                                &nbsp;<span></span>\
                                             </div>\
                                         </div>\
                                         <!-- 举报 -->\
@@ -284,12 +286,43 @@ $(document).ready(function(){
                                                     <div class="popup-info">举报</div>\
                                                     <div class="close">取消</div>\
                                                 </div>\
+                                                <div class="popup-eject">\
+                                                    <div class="popup-eject-return">\
+                                                        <div class="return-img">\
+                                                            <img src="./img/return.png" alt="返回上一页">\
+                                                        </div>\
+                                                        <div class="popup-eject--info">举报</div> \
+                                                    </div>\
+                                                    <div class="popup-content-info">\
+                                                        <div class="popup-content-info-1 popup-content-info-z">\
+                                                            <div  class="popup-radio">\
+                                                                <input type="radio" name="centent"/>\
+                                                            </div>\
+                                                            <div>辱骂、歧视、挑衅等不友好的内容!</div>\
+                                                        </div>\
+                                                        <div class="popup-content-info-2 popup-content-info-z">\
+                                                            <div  class="popup-radio">\
+                                                                <input type="radio" name="centent"/>\
+                                                            </div>\
+                                                            <div>广告、诈骗、或者垃圾内容!</div>\
+                                                        </div>\
+                                                        <div class="popup-content-info-3 popup-content-info-z">\
+                                                            <div  class="popup-radio">\
+                                                                <input type="radio" name="centent">\
+                                                            </div>\
+                                                            <div>色情、暴力、诋毁政治等触犯法律法规的内容!</div>\
+                                                        </div>\
+                                                    </div> \
+                                                    <div class="submission">\
+                                                        <input type="submit" value="提 交" />\
+                                                    </div> \
+                                                </div> \
                                             </div>\
                                         </div>\
                                     </div>\
                                     <div class="article-content">\
                                         <!-- 评论内容 -->\
-                                        <p class="article-content-info">\
+                                        <p class="article-content-info" data-id="'+datas.id+'" data-type="'+ pageIndex +'">\
                                         ' +datas.content+'\
                                         </p>\
                                     </div>\
@@ -305,7 +338,9 @@ $(document).ready(function(){
                                                 (datas.userAssist == true ? '<img src="./img/yizan.png" class="praise-img">' :'<img src="./img/favor-small.png" class="praise-img">')+
                                                 '</div>\
                                                 <!-- 点赞的数量 -->\
-                                                <p class="article-fabulous-num praise-txt" >'+datas.assistCount+'</p>\
+                                                <p class="article-fabulous-num praise-txt" >'+
+                                                (datas.assistCount === 0 ? "赞" : datas.assistCount)
+                                                +'</p>\
                                                 <span class="add-num"><em>+1</em></span>\
                                             </div>\
                                             <!-- 回复条数 点击跳转到评论详情页 -->\
@@ -334,38 +369,69 @@ $(document).ready(function(){
                             else if (window.event) {
                                 window.event.cancelBubble = true;//兼容IE
                             }
-                        }
-                        
+                        }                       
                         // 获取元素，设置单击事件
                         $('.spot-img').off("click").on( 'click', function(e){
                             $(this).parent().children(".eject-wrap").show();
                             stopPropagation(e);
                         });
-
                         // 单击关闭按钮，隐藏元素
                         $('.close').off("click").on( 'click', function(e){
                             $(this).parent().parent().hide();                          
                         });
-
                         // 鼠标在div里操作不隐藏
                         $(".eject-wrap").click(function (e) {
                             stopPropagation(e);
                         });
-
                         // 点击div之外的地方 div隐藏
                         $(document).bind("click", function(){
                             $(".eject-wrap").hide();     
                         });
+
+                         // 点击打开举报页面
+                        $('.popup-info').on('click', function(e){
+                            $(".popup-eject").show();  
+                        });  
+                        // 点击关闭举报页面
+                        $('.return-img').on('click', function(e){
+                            $(".popup-eject").hide();  
+                        });  
+
+                        // 点击举报
+                        $('.submission').off('click').on('click', function(e){
+                            var bFlaga = false;
+
+                            var gender = document.getElementsByName('centent');
+                            var val;
+                            for(radio in gender) {
+                                if(gender[radio].checked) {
+                                    bFlaga = true;
+                                    val = gender[radio].value;
+                                    break;
+                                }
+                            }
+                            
+                            if (bFlaga == false) {
+                                alert('类别不能为空，请选择！')
+                                return false;
+                            }
+
+                            alert('举报成功!');
+                            $(this).parent(".popup-eject").hide(); 
+                            $(this).parent(".popup-eject").empty(); 
+                
+                        });  
                       
 
                         // 显示分数
                         $(".score_Show p").each(function(index, element) {
                             var num = $(this).attr("tip");
-                            var www = num*1*.14 + "rem";
+                            var www = num*1*.146 + "rem";
                             $(this).css("width",www);
                             $(this).parent(".score_Show").siblings("span").text(num);
                         });
 
+                        console.log(datas.assistCount)
                         // 点赞
                         $('.praise').off("click").on('click', function(e){
                             // 获取图片id 
@@ -374,6 +440,11 @@ $(document).ready(function(){
                             var text_box = $(this).parent().children(".add-num");
                             // 点赞的数量
                             var praise_txt = $(this).parent().children(".praise-txt");
+
+                            if(praise_txt.text() == '赞'){                             
+                                praise_txt.text(0);
+                            }
+
                             // 将数字添加到 id为praise-txt的p标签中；
                             var num = parseInt(praise_txt.text());       
                             
@@ -395,24 +466,25 @@ $(document).ready(function(){
                                 praise_txt.text(num);
                                 $(this).attr("data-typea", "true");
                             }
+                            // (datas.assistCount === 0 ? "赞" : datas.assistCount)
+                           
 
-
-                            //加签名
+                            //点赞签名
                             var datad = {
                                 bookCommentId:e.currentTarget.dataset.ida,//评论id
-                                userId:localStorage.getItem('userKey'),
+                                userId:localStorage.getItem('userId'),
                                 sourceId:2                                
                             }
                             var md5 = md5Encryption(datad,'kB50erIyBe3ci4R7fsuyWuX4Raq7OGMv');
                             console.log( e.currentTarget.dataset.ida);
                             console.log( e.currentTarget.dataset.typea);
-
+                            console.log("&bookCommentId=" +e.currentTarget.dataset.ida +", &userId=" + localStorage.getItem('userKey') +', &sourceId=2'+', &signed='+md5);
                             $.ajax({
                                 type: 'POST',
                                 url: 'https://test.uwooz.com/mxapi/book/addAssist',                   
                                 data:{
                                     bookCommentId:e.currentTarget.dataset.ida,
-                                    userId:localStorage.getItem('userKey'),
+                                    userId:localStorage.getItem('userId'),
                                     sourceId:2, 
                                     signed:md5                               
                                 },
@@ -440,7 +512,11 @@ $(document).ready(function(){
                     $('.article-bottom-comment').on('click', function(event){
                         location.assign('./reply.html?id=' + event.currentTarget.dataset.id+'&page='+event.currentTarget.dataset.type);
                     });      
-                       
+                      
+                    //跳转到评论详情页 
+                    $('.article-content-info').on('click', function(event){
+                        location.assign('./reply.html?id=' + event.currentTarget.dataset.id+'&page='+event.currentTarget.dataset.type);
+                    });      
                    
                 },
                                 
@@ -457,7 +533,7 @@ $(document).ready(function(){
 
     
   
-    // }
+    }
 });
 
 

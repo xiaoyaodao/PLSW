@@ -9,51 +9,14 @@ body{
     width:100%;
     height:100%;
     font-family:"PingFangSC-Regular";
+    background:#fff;
 }
 
-nav{
-    width:100%;
-    height: .9rem;
-    padding: 0 .5rem;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color:#323232;
-    .return {
-        height: 100%;
-        width: 0.5rem;
-        display: flex;
-        align-items: center;
-        a{
-            display: flex;
-            height: .4rem;
-            -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-            img {
-                height: .4rem;
-            }
-        }
-       
-    }
-    .title-info {
-        font-size: .35rem;
-        color: white;
-    }
-    .spot {
-        width: .54rem;
-        height: .08rem;
-        display: flex;
-        img {
-            width: .54rem;
-            height: .08rem;
-        }
-    }
-}
 
 main {
     width:100%;
     position: absolute;
-    top: .9rem;
+    top:0;
     bottom: 1rem;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
@@ -61,7 +24,9 @@ main {
 
 .main-comment-info{
     width:100%;
-    height:4.36rem;
+    height:auto!important; 
+    height:1.74rem; 
+    min-height:1.74rem;
     padding:.44rem .42rem 0 .5rem;
     box-sizing: border-box;
 
@@ -152,14 +117,14 @@ main {
                     width:1.4rem;
                     height: .2rem;
                     background: url(../img/header-star-null.png)repeat-x;
-                    background-size:.28rem .2rem;                                
+                    background-size:.3rem .2rem;                                
                     position: relative;
         
                     p {
                         width:1.4rem;
                         height:.2rem;
                         background: url(../img/header-star.png)repeat-x;
-                        background-size:.28rem .2rem;
+                        background-size:.3rem .2rem;
                         left: 0;
                         
                     }
@@ -174,6 +139,7 @@ main {
             display: flex;
             align-self: flex-start;
             padding-top:.08rem;
+            padding-right: .1rem;
             position: relative;
             .spot-img{
                 display: flex;
@@ -195,16 +161,14 @@ main {
                 display:none;
                 position: absolute;
                 top:.2rem;
-                right:.3rem;
-                // z-index:9999;
+                right:.5rem;
 
                 // 点击弹出
-                .popup{
-                  
+                .popup{                  
                     width:1.6rem;
                     height:2rem;
                     font-size: .3rem;
-                   color: red;
+                    color: red;
                     .popup-info{
                         width:100%;
                         height:1rem;
@@ -218,6 +182,90 @@ main {
                         text-align: center;
                     }
                 }
+                /* 举报详情内容 */
+                .popup-eject{
+                    width:100%;
+                    height:100%;
+                    background:rgba(255,255,255,1);;
+                    display:none;
+                    position: fixed;
+                    top:0;
+                    right:0;
+                    bottom:0;
+                    left:0;
+                    z-index:9999;
+                    /* 举报返回 */
+                    .popup-eject-return {
+                        width:100%;
+                        height: .9rem;
+                        padding: 0 .5rem;
+                        box-sizing: border-box;
+                        display: flex;
+                        align-items: center;
+                        background-color:#0288D1;
+                        .return-img{
+                            height: 100%;
+                            width: 0.5rem;
+                            display: flex;
+                            align-items: center;
+                            img{                         
+                                height: .4rem;
+                            }
+                        }
+                       
+                        .popup-eject--info {
+                            font-size: .35rem;
+                            color: white;
+                        }
+                       
+                    }
+                    /* 举报内容 */
+                    .popup-content-info{
+                        width:90%;
+                        height:auto;
+                        margin:0 auto;
+                        font-size: .3rem;
+                        padding: .4rem 0;
+                        .popup-content-info-z{
+                            width:100%;
+                            height:.4rem;
+                            display:flex;
+                            align-items:center;
+                            padding-bottom:.2rem;
+                            .popup-radio{
+                                width:.4rem;
+                                height:.4rem;
+                                padding-right:.1rem;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                input{
+                                    width:.34rem;
+                                    height:.34rem; 
+                                }
+                            }
+                        }
+                        .popup-content-info-1{
+                            padding-top:.3rem;
+                        }
+                    }
+                    /* 提交 */
+                    .submission{
+                        width:100%;
+                        height:.6rem;
+                        padding-top:.3rem;
+                        border-top:.01rem solid #ccc;
+                        display: flex;
+                        justify-content:center;
+                        input{
+                            width:90%;
+                            background-color:#0288D1;
+                            font-size: .32rem;
+                            color:#fff;
+                            border:0;
+                        }
+                    }
+                }
 
             }
         }
@@ -226,16 +274,17 @@ main {
 
     .main-content{
         width:100%;
-        height:1.68rem;
+        height:auto!important; 
         padding:.28rem 0 .26rem 0;
 
         .main-content-info{
             width:100%;
-            height:1.68rem;
+            height: auto!important;
+            height:.42rem; 
+            min-height:.42rem;
             font-size: .28rem;
             color:#2f3235;
             line-height: .42rem;
-            overflow:auto;
         }
     }
     .main-bottom{
@@ -255,32 +304,29 @@ main {
         }
 
         .main-bottom-right{
-            width:1.68rem;
-            height:.26rem;
+            width:auto;
+            height:.3rem;
             font-size: .24rem;
             color:#9a9a9a;
             display: flex;
             align-items: center;
-            padding-right:.24rem;
-            // box-sizing: border-box;
             position: relative;
 
             .main-bottom-fabulous{
-                height:.24rem;
+                width:.76rem;
+                height:.3rem;
                 display: flex;
                 align-items: center;
-                margin-right: .38rem;
+                margin-right: .2rem;
                 box-sizing: border-box;
-
                 .main-fabulous-img{
-                    width:.25rem;
-                    height:.24rem;
-                    display: flex;
+                    width:.26rem;
+                    height:.3rem;
                     padding-right:.12rem;
                     cursor: pointer;
                     
                     img{
-                        width:.25rem;
+                        width:.24rem;
                         height:.24rem;
                         display:block;
                     }
@@ -312,7 +358,13 @@ main {
                         font-style:normal;
                     }
                 }
+                .main-fabulous-num{
+                    display: flex;
+                    align-items: center;
+                    width:.38rem;
+                    height:.3rem;
 
+                }
                 .praise-txt.hover{
                     color: #EB4F38;
                 }
@@ -377,22 +429,25 @@ main {
                
             }
             .main-bottom-comment{
-                height:.24rem;
+                width:.64rem;
+                height:.3rem;
                 display: flex;
-                align-items: flex-start;
+                align-items: center;
                 .main-comment-img{
                     width:.25rem;
                     height:.24rem;
                     display: flex;
-                    padding-right:.12rem;
                     img{
-                        width:.25rem;
+                        width:.24rem;
                         height:.24rem;
                     }
                 }
                 .main-comment-num{
-                    height:.24rem;
-                    line-height: .2rem;
+                    width:.38rem;
+                    height:.3rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;  
                 }
             }
         }
@@ -401,10 +456,11 @@ main {
 }
 
 .line{
-    width:87%;
-    height:.01rem;
+    width:86%;
+    height:.02rem;
     margin:0 auto;
-    background:#e4e4e4;
+    margin-top:.4rem;
+    background-color:#e4e4e4;
 }
 
 .replyNumber{
@@ -420,8 +476,11 @@ section{
     height:auto;
     .section-comment-info{
         width:100%;
-        height:3.2rem;
+        height:auto!important; 
+        height:1.42rem; 
+        min-height:1.42rem;
         padding:.0 .42rem 0 .5rem;
+        margin-bottom:.5rem;
         box-sizing: border-box;
     
         .section-top{
@@ -448,7 +507,6 @@ section{
                 .section-recollections-title{
                     font-size: .3rem;
                     color:#1e2226;
-                    padding-bottom:.24rem;
                     line-height: .72rem;
                 }      
                
@@ -459,6 +517,7 @@ section{
                 display: flex;
                 align-self: flex-start;
                 padding-top:.08rem;
+                padding-right:.1rem;
                 position: relative;
                 .section-spot-img{
                     display: flex;
@@ -479,7 +538,7 @@ section{
                     display:none;
                     position: absolute;
                     top:.2rem;
-                    right:.3rem;
+                    right:.5rem;
 
                     // 点击弹出
                     .section-popup{                      
@@ -500,6 +559,89 @@ section{
                             text-align: center;
                         }
                     }
+                    .popup-eject{
+                        width:100%;
+                        height:100%;
+                        background:rgba(255,255,255,1);;
+                        display:none;
+                        position: fixed;
+                        top:0;
+                        right:0;
+                        bottom:0;
+                        left:0;
+                        z-index:9999;
+                        /* 举报返回 */
+                        .popup-eject-return {
+                            width:100%;
+                            height: .9rem;
+                            padding: 0 .5rem;
+                            box-sizing: border-box;
+                            display: flex;
+                            align-items: center;
+                            background-color:#0288D1;
+                            .return-img{
+                                height: 100%;
+                                width: 0.5rem;
+                                display: flex;
+                                align-items: center;
+                                img{                         
+                                    height: .4rem;
+                                }
+                            }
+                           
+                            .popup-eject--info {
+                                font-size: .35rem;
+                                color: white;
+                            }
+                           
+                        }
+                        /* 举报内容 */
+                        .popup-content-info{
+                            width:90%;
+                            height:auto;
+                            margin:0 auto;
+                            font-size: .3rem;
+                            padding: .4rem 0;
+                            .popup-content-info-z{
+                                width:100%;
+                                height:.4rem;
+                                display:flex;
+                                align-items:center;
+                                padding-bottom:.2rem;
+                                .popup-radio{
+                                    width:.4rem;
+                                    height:.4rem;
+                                    padding-right:.1rem;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    input{
+                                        width:.34rem;
+                                        height:.34rem; 
+                                    }
+                                }
+                            }
+                            .popup-content-info-1{
+                                padding-top:.3rem;
+                            }
+                        }
+                        /* 提交 */
+                        .submission{
+                            width:100%;
+                            height:.6rem;
+                            padding-top:.3rem;
+                            border-top:.01rem solid #ccc;
+                            display: flex;
+                            justify-content:center;
+                            input{
+                                width:90%;
+                                background-color:#0288D1;
+                                font-size: .32rem;
+                                color:#fff;
+                                border:0;
+                            }
+                        }
+                    }
 
                 }
             }
@@ -508,12 +650,14 @@ section{
     
         .section-content{
             width:100%;
-            height:1.68rem;
+            height:auto!important; 
             padding:.28rem 0 .26rem 0;
     
             .section-content-info{
                 width:100%;
-                height:1.68rem;
+                height: auto!important;
+                height:.42rem; 
+                min-height:.42rem;
                 font-size: .28rem;
                 color:#2f3235;
                 line-height: .42rem;
@@ -544,7 +688,6 @@ section{
                 color:#9a9a9a;
                 display: flex;
                 align-items: center;
-                padding-right:.24rem;
                 box-sizing: border-box;
                 position: relative;
                 
@@ -663,9 +806,9 @@ section{
         }
     }
 
-    .section-comment-info:not(:last-child){
-        margin-bottom:.5rem;
-    }
+    // .section-comment-info:not(:last-child){
+    //     margin-bottom:.5rem;
+    // }
 }
 
 

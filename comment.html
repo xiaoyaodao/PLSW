@@ -14,18 +14,6 @@
     <script src="js/comment.js"></script>
 </head>
 <body>
-    <nav>
-        <div class="return">
-            <a href="./index.html">
-                <img src="./img/return.png" alt="返回上一页">
-            </a>
-            
-        </div>
-        <div class="title-info">从你的全世界路过</div>
-        <div class="spot">
-            <img src="./img/spot.png"> 
-        </div>
-    </nav>
 
     <main>
         <div class="star-comment-content">
@@ -76,10 +64,6 @@
         // 评星
         scoreFun($("#startone"));
 
-        // textareas 高度自适应
-        // var text = document.getElementById("textareas");
-        // autoTextarea(text);//调用
-        
         // textareas 字数限定为100
        $("#textareas").on("input propertychange", function() {
         var $this = $(this),

@@ -17,43 +17,10 @@ body {
   background: #fff;
 }
 
-.title {
-  width: 100%;
-  height: .9rem;
-  padding: 0 .5rem;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #323232;
-}
-.title .return {
-  height: 100%;
-  width: 0.5rem;
-  display: flex;
-  align-items: center;
-}
-.title .return img {
-  height: .4rem;
-}
-.title .title-info {
-  font-size: .35rem;
-  color: white;
-}
-.title .spot {
-  width: .54rem;
-  height: .08rem;
-  display: flex;
-}
-.title .spot img {
-  width: .54rem;
-  height: .08rem;
-}
-
 main {
   width: 100%;
   position: fixed;
-  top: .9rem;
+  top: 0;
   bottom: 1rem;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
@@ -183,17 +150,17 @@ header .header-content .header-right img {
 }
 .score .score-star .show_number .atar_Show {
   background: url(../img/score-star-n.png) repeat-x;
-  background-size: .48rem .32rem;
-  width: 2.4rem;
+  background-size: .5rem .32rem;
+  width: 2.5rem;
   height: .32rem;
   position: relative;
 }
 .score .score-star .show_number .atar_Show p {
   background: url(../img/score-star.png) repeat-x;
-  background-size: .48rem .32rem;
+  background-size: .5rem .32rem;
   left: 0;
   height: .32rem;
-  width: 2.4rem;
+  width: 2.5rem;
 }
 .score .score-num {
   height: .24rem;
@@ -263,7 +230,7 @@ section .section-top .section-top-info .section-info-more {
   width: .7rem;
   height: .4rem;
   font-size: .28rem;
-  line-height: .4rem;
+  line-height: .5rem;
   color: #219af4;
   background: white;
   text-align: center;
@@ -448,7 +415,9 @@ section article {
 }
 section article .article-comment-info {
   width: 100%;
-  height: 3.5rem;
+  height: auto !important;
+  height: 1.74rem;
+  min-height: 1.74rem;
   padding: 0 .42rem 0 .5rem;
   box-sizing: border-box;
 }
@@ -500,14 +469,14 @@ section article .article-comment-info .article-top .article-recollections .artic
   width: 1.4rem;
   height: .2rem;
   background: url(../img/header-star-null.png) repeat-x;
-  background-size: .28rem .2rem;
+  background-size: .3rem .2rem;
   position: relative;
 }
 section article .article-comment-info .article-top .article-recollections .article-recollections-score .score_Show p {
   width: 1.4rem;
   height: .2rem;
   background: url(../img/header-star.png) repeat-x;
-  background-size: .28rem .2rem;
+  background-size: .3rem .2rem;
   left: 0;
 }
 section article .article-comment-info .article-top .article-more {
@@ -516,6 +485,7 @@ section article .article-comment-info .article-top .article-more {
   display: flex;
   align-self: flex-start;
   padding-top: .08rem;
+  padding-right: .1rem;
   position: relative;
 }
 section article .article-comment-info .article-top .article-more .spot-img {
@@ -535,7 +505,8 @@ section article .article-comment-info .article-top .article-more .eject-wrap {
   display: none;
   position: absolute;
   top: .2rem;
-  right: .3rem;
+  right: .5rem;
+  /* 举报详情内容 */
 }
 section article .article-comment-info .article-top .article-more .eject-wrap .popup {
   width: 1.6rem;
@@ -555,22 +526,104 @@ section article .article-comment-info .article-top .article-more .eject-wrap .po
   line-height: 1rem;
   text-align: center;
 }
+section article .article-comment-info .article-top .article-more .eject-wrap .popup-eject {
+  width: 100%;
+  height: 100%;
+  background: white;
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
+  /* 举报返回 */
+  /* 举报内容 */
+  /* 提交 */
+}
+section article .article-comment-info .article-top .article-more .eject-wrap .popup-eject .popup-eject-return {
+  width: 100%;
+  height: .9rem;
+  padding: 0 .5rem;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  background-color: #0288D1;
+}
+section article .article-comment-info .article-top .article-more .eject-wrap .popup-eject .popup-eject-return .return-img {
+  height: 100%;
+  width: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+section article .article-comment-info .article-top .article-more .eject-wrap .popup-eject .popup-eject-return .return-img img {
+  height: .4rem;
+}
+section article .article-comment-info .article-top .article-more .eject-wrap .popup-eject .popup-eject-return .popup-eject--info {
+  font-size: .35rem;
+  color: white;
+}
+section article .article-comment-info .article-top .article-more .eject-wrap .popup-eject .popup-content-info {
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
+  font-size: .3rem;
+  padding: .4rem 0;
+}
+section article .article-comment-info .article-top .article-more .eject-wrap .popup-eject .popup-content-info .popup-content-info-z {
+  width: 100%;
+  height: .4rem;
+  display: flex;
+  align-items: center;
+  padding-bottom: .2rem;
+}
+section article .article-comment-info .article-top .article-more .eject-wrap .popup-eject .popup-content-info .popup-content-info-z .popup-radio {
+  width: .4rem;
+  height: .4rem;
+  padding-right: .1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+section article .article-comment-info .article-top .article-more .eject-wrap .popup-eject .popup-content-info .popup-content-info-z .popup-radio input {
+  width: .34rem;
+  height: .34rem;
+}
+section article .article-comment-info .article-top .article-more .eject-wrap .popup-eject .popup-content-info .popup-content-info-1 {
+  padding-top: .3rem;
+}
+section article .article-comment-info .article-top .article-more .eject-wrap .popup-eject .submission {
+  width: 100%;
+  height: .6rem;
+  padding-top: .3rem;
+  border-top: .01rem solid #ccc;
+  display: flex;
+  justify-content: center;
+}
+section article .article-comment-info .article-top .article-more .eject-wrap .popup-eject .submission input {
+  width: 90%;
+  background-color: #0288D1;
+  font-size: .32rem;
+  color: #fff;
+  border: 0;
+}
 section article .article-comment-info .article-content {
   width: 100%;
-  height: 1.68rem;
+  height: auto !important;
   padding: .28rem 0 .26rem 0;
 }
 section article .article-comment-info .article-content .article-content-info {
   width: 100%;
-  height: 1.68rem;
+  height: auto !important;
+  height: .42rem;
+  min-height: .42rem;
   font-size: .28rem;
-  color: #2f3235;
   line-height: .42rem;
-  overflow: auto;
+  color: #2f3235;
 }
 section article .article-comment-info .article-bottom {
   width: 100%;
-  height: .26rem;
+  height: .3rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -584,22 +637,21 @@ section article .article-comment-info .article-bottom .article-bottom-time .arti
   padding-right: .26rem;
 }
 section article .article-comment-info .article-bottom .article-bottom-right {
-  width: 1.68rem;
-  height: .26rem;
+  width: auto;
+  height: .3rem;
   font-size: .24rem;
   color: #9a9a9a;
   display: flex;
   align-items: center;
-  padding-right: .24rem;
   position: relative;
 }
 section article .article-comment-info .article-bottom .article-bottom-right .article-bottom-fabulous {
-  height: .24rem;
+  width: .76rem;
+  height: .3rem;
   display: flex;
   align-items: center;
-  margin-right: .38rem;
+  margin-right: .2rem;
   box-sizing: border-box;
-  align-items: center;
   /*点赞图标放大动画开始*/
   /*点赞图标放大动画结束*/
   /*点赞数量加减动画开始*/
@@ -607,14 +659,13 @@ section article .article-comment-info .article-bottom .article-bottom-right .art
   /*动态点赞结束*/
 }
 section article .article-comment-info .article-bottom .article-bottom-right .article-bottom-fabulous .article-fabulous-img {
-  width: .25rem;
-  height: .24rem;
-  display: flex;
+  width: .26rem;
+  height: .3rem;
   padding-right: .12rem;
   cursor: pointer;
 }
 section article .article-comment-info .article-bottom .article-bottom-right .article-bottom-fabulous .article-fabulous-img img {
-  width: .25rem;
+  width: .24rem;
   height: .24rem;
   display: block;
 }
@@ -626,6 +677,12 @@ section article .article-comment-info .article-bottom .article-bottom-right .art
   /* Safari 和 Chrome */
   -o-animation: myfirst 0.5s;
   /* Opera */
+}
+section article .article-comment-info .article-bottom .article-bottom-right .article-bottom-fabulous .article-fabulous-num {
+  display: flex;
+  align-items: center;
+  width: .38rem;
+  height: .3rem;
 }
 section article .article-comment-info .article-bottom .article-bottom-right .article-bottom-fabulous .add-num {
   display: none;
@@ -698,23 +755,25 @@ section article .article-comment-info .article-bottom .article-bottom-right .art
   }
 }
 section article .article-comment-info .article-bottom .article-bottom-right .article-bottom-comment {
-  height: .24rem;
+  width: .64rem;
+  height: .3rem;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
 }
 section article .article-comment-info .article-bottom .article-bottom-right .article-bottom-comment .article-comment-img {
-  width: .25rem;
-  height: .24rem;
-  display: flex;
-  padding-right: .12rem;
+  width: .26rem;
+  height: .3rem;
 }
 section article .article-comment-info .article-bottom .article-bottom-right .article-bottom-comment .article-comment-img img {
-  width: .25rem;
+  width: .24rem;
   height: .24rem;
 }
 section article .article-comment-info .article-bottom .article-bottom-right .article-bottom-comment .article-comment-num {
-  height: .24rem;
-  line-height: .2rem;
+  width: .38rem;
+  height: .3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 section article .article-comment-info:not(:last-child) {
   margin-bottom: .7rem;
