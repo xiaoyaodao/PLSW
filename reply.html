@@ -49,7 +49,16 @@
             },300);
         });
 
-
+        // textareas 字数限定为100
+        $("#inpinfo").on("input propertychange", function() {
+                var $this = $(this),
+                    _val = $this.val(),
+                    count = "";
+                if (_val.length > 100) {
+                    $this.val(_val.substring(0, 100));
+                    alert("您好！文字数限定为100，谢谢！");
+                }
+        });
     </script>
 </body>
 </html>

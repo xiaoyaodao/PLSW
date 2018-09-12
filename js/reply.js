@@ -373,7 +373,11 @@ $(document).ready(function () {
                     praise_num.text(num);
                     $(this).attr("data-type", "true");
                 }
-               
+
+                if(praise_num.text() == 0){                             
+                    praise_num.text(" 赞");
+                }
+
                 //顶部的点赞的 加签名
                 var datad = {
                     bookCommentId:e.currentTarget.dataset.id,//评论id
@@ -495,7 +499,9 @@ $(document).ready(function () {
                     praise_txt.text(num);
                     $(this).attr("data-type2", "true");
                 }
-
+                if(praise_txt.text() == 0){                             
+                    praise_txt.text("赞");
+                }
                  // 回复评论者的点赞 加签名
                 var datad = {
                     bookCommentId:e.currentTarget.dataset.id2,//评论id

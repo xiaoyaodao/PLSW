@@ -466,7 +466,9 @@ $(document).ready(function(){
                                 praise_txt.text(num);
                                 $(this).attr("data-typea", "true");
                             }
-                            // (datas.assistCount === 0 ? "赞" : datas.assistCount)
+                            if(praise_txt.text() == 0){                             
+                                praise_txt.text('赞');
+                            }
                            
 
                             //点赞签名
